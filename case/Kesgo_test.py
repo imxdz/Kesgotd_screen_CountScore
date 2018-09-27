@@ -26,7 +26,10 @@ def wexcel(base_url,mb,exname):
     stulisti = interoperone.Random_StuSel(i)#随机取i个学生的列表
     stulistsum = interoperone.StuList#学生总数的列表
     ExperimentID = interoperone.ExperimentID1#实验id
-    wt = Write_excel("C:\\Users\\Administrator\\PycharmProjects\\Kesgotd_screen_CountScore\\case\\write.xlsx")
+    curpath = os.path.dirname(os.path.realpath(__file__))
+    testxlsx = os.path.join(curpath, "write.xlsx")
+    # wt = Write_excel("C:\\Users\\Administrator\\PycharmProjects\\Kesgotd_screen_CountScore\\case\\write.xlsx")
+    wt = Write_excel(testxlsx)
     log = Log()
 #进入实验提交思考题
     listcount1 = []#记录提交思考题的学生id，按时间顺序排列
@@ -306,7 +309,8 @@ def wexcel(base_url,mb,exname):
     for stuid in stulistsum:
         wt.writee(rown, 1,str(stuid[0]))
         rown+=1
-    excel = Excelread("C:\\Users\\Administrator\\PycharmProjects\\Kesgotd_screen_CountScore\\case\\write.xlsx","Sheet")
+    # excel = Excelread("C:\\Users\\Administrator\\PycharmProjects\\Kesgotd_screen_CountScore\\case\\write.xlsx","Sheet")
+    excel = Excelread(testxlsx,"Sheet")
     table = excel.table
     rowNum = excel.rowNum    # 获取总行数
     colNum = excel.colNum    # 获取总列数
@@ -408,7 +412,8 @@ def wexcel(base_url,mb,exname):
                 wt.writee(i+1, col,0)
         col+=1
 #读取excel
-    excel1 = Excelread("C:\\Users\\Administrator\\PycharmProjects\\Kesgotd_screen_CountScore\\case\\write.xlsx","Sheet")
+    # excel1 = Excelread("C:\\Users\\Administrator\\PycharmProjects\\Kesgotd_screen_CountScore\\case\\write.xlsx","Sheet")
+    excel1 = Excelread(testxlsx,"Sheet")
     rr = excel1.dict_data()
     # print("excel中值列表为：%s"%rr)
     log.info("excel中值列表为：%s"%rr)
