@@ -67,10 +67,10 @@ def wexcel(base_url,mb,exname):
     def aaa():
       for groupstuk in groupstulistk:
           for i in range(random.randint(1,4)):
-             interopertwo.TLGruopleaderSpeak(str(groupstuk[0]),str(groupstuk[1]),str(groupstuk[2]),str(groupstuk[3])) #观点讨论组长发言
+             interopertwo.TLGruopleaderSpeak(str(groupstuk[0]),str(groupstuk[1]),str(groupstuk[2]),str(groupstuk[3]),str(groupstuk[4]),str(groupstuk[5])) #观点讨论组长发言
              listcount2.append((str(groupstuk[0]),str(groupstuk[1]),str(groupstuk[2])))
              Speechcountlist1.append(str(groupstuk[1]))
-             uioper.driver.refresh()
+             # uioper.driver.refresh()
              sleep(3)
     # print("组长数是%s"%k)
     listcount22 = []#记录互动的学生id
@@ -82,7 +82,7 @@ def wexcel(base_url,mb,exname):
              interopertwo.TLInteractionSpeak(str(stuii[0]))#观点讨论我的互动
              Speechcountlist2.append(str(stuii[0]))
              listcount22.append(str(stuii[0]))
-             # uioper.driver.refresh()
+             uioper.driver.refresh()
              sleep(3)
     # @threads(2)
     # def run_test(function):

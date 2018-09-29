@@ -150,8 +150,7 @@ class ScreenOperationTwo(ScreenOperationOne):
  def __init__(self,s,base_url,mb,exname):
 #分组后发送观点讨论的组长发言
     super().__init__(s,base_url,mb,exname)
-    sql5 = "select a.GroupID,b.StudentID,a.GroupOrderNo,GroupName,* from dbo.AFCS_Group a join dbo.AFCS_GroupStudents b on a.GroupID = b.GroupID " \
-       "where a.ExperimentID = '"+self.ExperimentID1+"' and b.IsLeader = '1'"
+    sql5 = "select a.GroupID,b.StudentID,a.GroupOrderNo,GroupName,GroupAnotherName,RealName,* from dbo.AFCS_Group a join dbo.AFCS_GroupStudents b on a.GroupID = b.GroupID join dbo.AFCS_StudentInfo c on b.StudentID = c.StudentID where a.ExperimentID = '"+self.ExperimentID1+"' and b.IsLeader = '1'"
     B5 = self.A.mssql_getrows(sql5) #根据实验id找小组组号、组长学生id 取第一个小组
     # print(B5)
     sql6 = "select a.GroupID,b.StudentID,a.GroupOrderNo,GroupName,* from dbo.AFCS_Group a join dbo.AFCS_GroupStudents b on a.GroupID = b.GroupID " \
@@ -188,13 +187,14 @@ class ScreenOperationTwo(ScreenOperationOne):
     Aslice = random.sample(listA, n)
     return Aslice
 
- def TLGruopleaderSpeak(self,GroupID,groupstu,groupOrderNo,groupName):
+ def TLGruopleaderSpeak(self,GroupID,groupstu,groupOrderNo,groupName,GroupAnotherName,RealName):
 #观点讨论组长发言
+    speakcontent = Unicode(random.randint(1,20))
     url4 = "http://192.168.0.167/kesgo.Service/wcf/DiscussionService.svc/CreateSpeak"
     body4 = {"speakEntity":
              "{\"SpeakID\":\"00000000-0000-0000-0000-000000000000\","
              "\"GroupID\":\""+GroupID+"\","
-             "\"SpeakContent\":\""+Unicode(random.randint(1,20))+"\","
+             "\"SpeakContent\":\""+speakcontent+"\","
              "\"Grade\":0,"
              "\"ExperimentID\":\""+self.ExperimentID1+"\","
              "\"GroupOrderNo\":\""+groupOrderNo+"\","
@@ -209,7 +209,14 @@ class ScreenOperationTwo(ScreenOperationOne):
       "Content-Type": "application/json;charset=UTF-8"
      }
     r4 = self.s.post(url4, json=body4, headers=h4)
-
+    speakid = r4.text
+    speakid = speakid.replace("\"", "")#去除双引号
+#调组长发言siglar接口
+    url4siglar = "http://192.168.0.249:18199/signalr/signalr/send?transport=longPolling&connectionToken=AQAAANCMnd8BFdERjHoAwE%2FCl%2BsBAAAAVdYmo0qzSEea%2BwEs7MZ4ngAAAAACAAAAAAAQZgAAAAEAACAAAACbjmTwtkJkk8GDojPJQGpqfhcTAPDRZJqbezvJCXP5lgAAAAAOgAAAAAIAACAAAAAAEr1ZVRi7Ly8wB3BXLlWhXvotbIoVE6jpC1g6V8nyTTAAAAD97qmwL2e9MY5QXQLaSmf5fxtHbPb%2FJiLghBIJ%2By7VvRb7hFjWjuZnR62JAdGqC5lAAAAAf7iRnrZhW02zWwAswZnpnXuCXs6gXsSDfgZLu3VYxQOlo3Dis61R%2F2%2FczYbeefYA9IGtlZBlSsDR2lgXySwE0w%3D%3D&groupid="+self.ExperimentID1
+    body4siglar = {"data":"{\"H\":\"kesgohub\",\"M\":\"sendGroupSpeakData\",\"A\":[1,\"{\\\"speakID\\\":\\\""+speakid+"\\\",\\\"groupOrderNo\\\":\\\""+groupOrderNo+"\\\",\\\"groupName\\\":\\\""+groupName+"\\\",\\\"speakContent\\\":\\\""+speakcontent+"\\\",\\\"groupID\\\":\\\""+GroupID+"\\\",\\\"isLeader\\\":\\\"1\\\",\\\"studentId\\\":\\\""+groupstu+"\\\",\\\"realName\\\":\\\""+RealName+"\\\",\\\"headImage\\\":\\\"/images/common/normalFace.png\\\",\\\"groupAnotherName\\\":\\\""+GroupAnotherName+"\\\"}\"],\"I\":1}"}
+    h4siglar = {"Content-Type":"application/x-www-form-urlencoded; charset=UTF-8",
+           "User-Agent":"Mozilla/5.0 (Linux; Android 8.1.0; MI 8 Build/OPM1.171019.026; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/62.0.3202.84 Mobile Safari/537.36"}
+    r = requests.post(url4siglar, data=body4siglar, headers=h4siglar)
 
  def TLInteractionSpeak(self,stu):
 #观点讨论我的互动
