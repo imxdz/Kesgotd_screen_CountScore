@@ -9,6 +9,8 @@ import smtplib
 import os
 import datetime
 from case import Kesgo_test
+from case.Kesgo_Backstage import kesgo_screen
+from common.Generate_Random import *
 #下面三行代码python2报告出现乱码时候可以加上####
 '''import sys
 reload(sys)
@@ -106,10 +108,23 @@ def send_mail(sender, psw, receiver, smtpserver, report_file, port):
 
 
 if __name__ == "__main__":
+    import os
+    import configparser
     from config import readConfig
+
     base_url = readConfig.base_url
-    mb = readConfig.mb
-    exname = readConfig.exname
+    # mb = readConfig.mb
+    # exname = readConfig.exname
+    mb = tecphone_num()
+    exname = Unicode(3)
+    cur_path = os.path.dirname(os.path.realpath(__file__))
+    configPath = os.path.join(cur_path,"config\\cfg.ini")
+    conf = configparser.ConfigParser()
+    conf.read(configPath)
+    conf.set("experiment", "exname",exname)
+    conf.write(open(configPath, "r+"))
+
+    kesgo_screen.backstage(base_url,mb,exname)
     Kesgo_test.wexcel(base_url,mb,exname)
     all_case = add_case(caseName="case", rule="test*.py")   #  加载用例
     # # 生成测试报告的路径

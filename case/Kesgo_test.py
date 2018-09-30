@@ -432,10 +432,19 @@ def wexcel(base_url,mb,exname):
 
 
 if __name__ == '__main__':
-    base_url = "http://192.168.0.167"
-    mb = "18913938700"
-    exname = "cccttt"
-    wexcel(base_url,mb,exname)
+    import os
+    import configparser
+    exname = "fff"
+    cur_path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
+    configPath = os.path.join(cur_path, "config\\cfg.ini")
+    conf = configparser.ConfigParser()
+    conf.read(configPath)
+    conf.set("experiment", "exname",exname)
+    conf.write(open(configPath, "r+"))
+    # base_url = "http://192.168.0.167"
+    # mb = "18913938700"
+    # exname = "cccttt"
+    # wexcel(base_url,mb,exname)
 
 
 

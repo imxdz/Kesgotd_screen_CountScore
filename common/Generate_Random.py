@@ -27,6 +27,14 @@ def phone_num():
     res = start+end
     return res
 
+def tecphone_num():
+    num_start = ['134', '135', '136', '137', '138', '139', '150', '151', '152', '158', '159', '157', '182', '187', '188',
+           '147', '130', '131', '132', '155', '156', '185', '186', '133', '153', '180', '189']
+    start = random.choice(num_start)
+    end = ''.join(random.sample(string.digits,8))
+    res = start+end
+    return res
+
 def Generate(n):
     a = ["我觉得","我是","差不多吧","可能","我认为","这样就行了","嗯嗯","可以有","哈哈哈"]
     s = ""
@@ -42,5 +50,5 @@ def Generate(n):
 
 
 if __name__ == '__main__':
-    a = Generate(2)
+    a = tecphone_num()
     print(a)

@@ -6,6 +6,7 @@ from common import readexcel
 from common import writeexcel
 from common.Mssql_pub import MssqlUtil
 from config import readConfig
+
 # 获取write.xlsx路径
 curpath = os.path.dirname(os.path.realpath(__file__))
 testxlsx = os.path.join(curpath, "write.xlsx")

@@ -66,8 +66,8 @@ class Add_Student():
         list1 = json.loads(str1)
         for i in list1:
             dict1 = dict(i)
-            print(type(dict1))
-            print(dict1)
+            # print(type(dict1))
+            # print(dict1)
             if dict1["ClassName"]==ClassName:
                 return (dict1["ClassID"])
 
@@ -106,8 +106,8 @@ class Add_Student():
         list1 = json.loads(str1)
         for i in list1:
             dict1 = dict(i)
-            print(type(dict1))
-            print(dict1)
+            # print(type(dict1))
+            # print(dict1)
             if dict1["RealName"] == realname:
                 return (dict1["StudentID"])
 
@@ -140,44 +140,70 @@ class Add_Student():
         num_month = ['01-01', '02-01', '03-01', '04-01', '05-01', '06-01', '07-01', '08-01', '09-01', '10-01', '11-01', '12-01']
         return num_month
 
+    def has_stu(self,mb,exname):
+        res = self.tec_login(mb,"1")
+        teacherid = self.gettecid(res)         #获取登录的教师id
+        a = self.add_class(teacherid,exname)
+        b = self.get_all_classid(teacherid)      #获取所有班级i
+        json.dumps(b)
+        str1 = b
+        list1 = json.loads(str1)
+        b = self.get_add_class_classId(b,exname)       #获取添加的班级的id
+        for i in range(1,10):
+            phone = self.phone_num()+str(i)
+            name = Unicode(2)
+            c = self.add_stu(teacherid,name,"1",phone,b)
+            d = self.get_all_stu(b)
+            json.dumps(d)
+            str2 = d
+            list2 = json.loads(str2)
+            e = self.get_add_StudentID(d,name)
+            stunumber = self.stu_num()+str(i)
+            QQnumber = self.QQ_num()+str(i)
+            birthdaty = "2018"+"-"+self.birthday()[i-1]
+            f = self.edit_add_stu(teacherid,name,"1",phone,stunumber,QQnumber,birthdaty,b,e)
+
+
+
 
 
 if __name__ == "__main__":
     base_url = "http://192.168.0.167"
     abc = Add_Student(base_url)
-    res = abc.tec_login("18913938700","1")
-    print(res)#登录
-    teacherid = abc.gettecid(res)         #获取登录的教师id
-    print (teacherid)
-    a = abc.add_class(teacherid,u"测试班级")
-    print(a)
-    b = abc.get_all_classid(teacherid)      #获取所有班级id
-    json.dumps(b)
-    print(b)
-    str1 = b
-    list1 = json.loads(str1)
-    print(type(list1))
-    b = abc.get_add_class_classId(b,u"测试班级")       #获取添加的班级的id
-    print(b)
-for i in range(1,10):
-    phone = abc.phone_num()+str(i)
-    print("手机号码是%s"%phone)
-    name = Unicode(2)
-    # name = "好好"
-    c = abc.add_stu(teacherid,name,"1",phone,b)
-    print(c)
-    d = abc.get_all_stu(b)
-    json.dumps(d)
-    print(d)
-    str2 = d
-    list2 = json.loads(str2)
-    print(type(list2))
-    e = abc.get_add_StudentID(d,name)
-    print(e)
-    stunumber = abc.stu_num()+str(i)
-    print("学号是%s"%stunumber)
-    QQnumber = abc.QQ_num()+str(i)
-    birthdaty = "2018"+"-"+abc.birthday()[i-1]
-    f = abc.edit_add_stu(teacherid,name,"1",phone,stunumber,QQnumber,birthdaty,b,e)
+    abc.has_stu("18913938700","aa")
+#     res = abc.tec_login("18913938700","1")
+#     print(res)#登录
+#     teacherid = abc.gettecid(res)         #获取登录的教师id
+#     print (teacherid)
+#     a = abc.add_class(teacherid,u"测试班级")
+#     print(a)
+#     b = abc.get_all_classid(teacherid)      #获取所有班级id
+#     json.dumps(b)
+#     print(b)
+#     str1 = b
+#     list1 = json.loads(str1)
+#     print(type(list1))
+#     b = abc.get_add_class_classId(b,u"测试班级")       #获取添加的班级的id
+#     print(b)
+# for i in range(1,10):
+#     phone = abc.phone_num()+str(i)
+#     print("手机号码是%s"%phone)
+#     name = Unicode(2)
+#     # name = "好好"
+#     c = abc.add_stu(teacherid,name,"1",phone,b)
+#     print(c)
+#     d = abc.get_all_stu(b)
+#     json.dumps(d)
+#     print(d)
+#     str2 = d
+#     list2 = json.loads(str2)
+#     print(type(list2))
+#     e = abc.get_add_StudentID(d,name)
+#     print(e)
+#     stunumber = abc.stu_num()+str(i)
+#     print("学号是%s"%stunumber)
+#     QQnumber = abc.QQ_num()+str(i)
+#     birthdaty = "2018"+"-"+abc.birthday()[i-1]
+#     f = abc.edit_add_stu(teacherid,name,"1",phone,stunumber,QQnumber,birthdaty,b,e)
 
 

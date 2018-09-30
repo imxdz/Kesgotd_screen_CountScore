@@ -57,7 +57,7 @@ class test():
                self.driver.find_element_by_xpath("//*[@id='quesPicView']/div/div[1]/div/div/div[{}]/div[2]/div[1]/div/i[{}]".format(a,b)).click()#随机选择某条点评
                list.append({a:b})
                sleep(3)
-               sleep(11)
+               # sleep(11)
         # #点击关闭控件关弹出框
         # driver.find_element_by_xpath(".//*[@id='closeFullleft']").click()
         sleep(3)
@@ -144,7 +144,7 @@ class test():
                self.driver.find_element_by_xpath(".//*[@id='drawCoverDiv']/div[{}]/div[2]/i[{}]".format(a,b)).click()#随机选择某条点评
                list.append({a:b})
                sleep(3)
-               sleep(11)
+               # sleep(11)
         #点击开始提问
         self.driver.find_element_by_xpath(".//*[@id='diagnosisGrade']").click()
         #提示点击确定
@@ -173,7 +173,7 @@ class test():
         k = random.randint(1,5)
         self.driver.find_element_by_xpath((".//*[@id='drawCoverDiv']/div[{}]/div[{}]/i[{}]").format(i,j,k)).click()
         sleep(3)
-        sleep(11)
+        # sleep(11)
         return k
  def questionComment3(self):
         #点击回答按钮
@@ -200,7 +200,7 @@ class test():
         k = random.randint(1,5)
         self.driver.find_element_by_xpath((".//*[@id='drawCoverDiv']/div[{}]/div[{}]/i[{}]").format(i,j,k)).click()
         sleep(3)
-        sleep(11)
+        # sleep(11)
         return k
  def answerComment3(self):
         #点击开始诊断
@@ -235,7 +235,7 @@ class test():
                self.driver.find_element_by_xpath(".//*[@id='drawCoverDiv']/div[{}]/div[2]/i[{}]".format(a,b)).click()#随机选择某条点评
                list.append({a:b})
                sleep(3)
-               sleep(11)
+               # sleep(11)
         #提示课堂成绩
         self.driver.find_element_by_xpath(".//*[@id='courseScore']").click()
         sleep(3)
