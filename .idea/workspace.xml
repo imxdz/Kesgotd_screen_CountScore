@@ -14,26 +14,29 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/Kesgotd_screen_CountScore$Unittest_Test_api_test_totalscore.coverage" NAME="Unittest Test_api.test_totalscore Coverage Results" MODIFIED="1538285408466" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/case" />
     <SUITE FILE_PATH="coverage/jiekou_pro$Unittests_in_test_04.coverage" NAME="Unittests in test_04 Coverage Results" MODIFIED="1523439712776" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/case" />
-    <SUITE FILE_PATH="coverage/Kesgotd_screen_CountScore$Kesgo_addstudent.coverage" NAME="Kesgo_addstudent Coverage Results" MODIFIED="1537260853408" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/case" />
+    <SUITE FILE_PATH="coverage/Kesgotd_screen_CountScore$Kesgo_addstudent.coverage" NAME="Kesgo_addstudent Coverage Results" MODIFIED="1538291026895" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/case" />
     <SUITE FILE_PATH="coverage/tdKesgo_screen$screen_test.coverage" NAME="screen_test Coverage Results" MODIFIED="1528422719693" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/case" />
-    <SUITE FILE_PATH="coverage/Kesgotd_screen_CountScore$Unittests_in_test_case.coverage" NAME="Unittests in test_case Coverage Results" MODIFIED="1537332892181" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/case" />
+    <SUITE FILE_PATH="coverage/Kesgotd_screen_CountScore$Unittests_in_test_case.coverage" NAME="Unittests in test_case Coverage Results" MODIFIED="1539081768398" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/case" />
     <SUITE FILE_PATH="coverage/tdKesgo_screen$wwww.coverage" NAME="wwww Coverage Results" MODIFIED="1528355226852" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/case" />
     <SUITE FILE_PATH="coverage/Kesgotd_screen_CountScore$Kesgo_Ifcode.coverage" NAME="Kesgo_Ifcode Coverage Results" MODIFIED="1534468046413" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/case" />
     <SUITE FILE_PATH="coverage/jiekou_pro$logger.coverage" NAME="logger Coverage Results" MODIFIED="1526025440198" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/common" />
     <SUITE FILE_PATH="coverage/Kesgotd_screen_CountScore$Take_OtherToList.coverage" NAME="Take_OtherToList Coverage Results" MODIFIED="1535009275447" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/common" />
     <SUITE FILE_PATH="coverage/Kesgotd_screen_CountScore$Kesgo_debug.coverage" NAME="Kesgo_debug Coverage Results" MODIFIED="1535339921379" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/case" />
-    <SUITE FILE_PATH="coverage/Kesgotd_screen_CountScore$Generate_Random.coverage" NAME="Generate_Random Coverage Results" MODIFIED="1535702356008" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/common" />
+    <SUITE FILE_PATH="coverage/Kesgotd_screen_CountScore$Generate_Random.coverage" NAME="Generate_Random Coverage Results" MODIFIED="1538275811485" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/common" />
     <SUITE FILE_PATH="coverage/jiekou_pro$Unittest_Test_test_addcourse.coverage" NAME="Unittest Test.test_addcourse Coverage Results" MODIFIED="1523589918675" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/case" />
     <SUITE FILE_PATH="coverage/jiekou_pro$run_all_case.coverage" NAME="run_all_case Coverage Results" MODIFIED="1526026307239" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Kesgotd_screen_CountScore$readConfig.coverage" NAME="readConfig Coverage Results" MODIFIED="1537325485359" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/config" />
     <SUITE FILE_PATH="coverage/jiekou_pro$Unittests_in_Test.coverage" NAME="Unittests in Test Coverage Results" MODIFIED="1523588514211" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/case" />
+    <SUITE FILE_PATH="coverage/Kesgotd_screen_CountScore$kesgo_screen_para.coverage" NAME="kesgo_screen_para Coverage Results" MODIFIED="1538276362846" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/case/Kesgo_Backstage" />
     <SUITE FILE_PATH="coverage/Kesgotd_screen_CountScore$logger.coverage" NAME="logger Coverage Results" MODIFIED="1537253857296" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/common" />
     <SUITE FILE_PATH="coverage/jiekou_pro$Unittest_Test_test_login.coverage" NAME="Unittest Test.test_login Coverage Results" MODIFIED="1523588461174" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/case" />
     <SUITE FILE_PATH="coverage/Kesgotd_screen_CountScore$writeexcel.coverage" NAME="writeexcel Coverage Results" MODIFIED="1536901402081" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/common" />
     <SUITE FILE_PATH="coverage/Kesgotd_screen_CountScore$Generate_RandomPhone.coverage" NAME="Generate_RandomPhone Coverage Results" MODIFIED="1534817237521" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/common" />
-    <SUITE FILE_PATH="coverage/Kesgotd_screen_CountScore$Kesgo_test.coverage" NAME="Kesgo_test Coverage Results" MODIFIED="1537266186844" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/case" />
+    <SUITE FILE_PATH="coverage/Kesgotd_screen_CountScore$Kesgo_test.coverage" NAME="Kesgo_test Coverage Results" MODIFIED="1538286778104" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/case" />
     <SUITE FILE_PATH="coverage/jiekou_pro$Unittest_Test_test_del.coverage" NAME="Unittest Test.test_del Coverage Results" MODIFIED="1523588532542" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/case" />
+    <SUITE FILE_PATH="coverage/Kesgotd_screen_CountScore$kesgo_screen.coverage" NAME="kesgo_screen Coverage Results" MODIFIED="1538279588515" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/case/Kesgo_Backstage" />
     <SUITE FILE_PATH="coverage/Kesgotd_screen_CountScore$screen_test.coverage" NAME="screen_test Coverage Results" MODIFIED="1534410504251" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/case" />
     <SUITE FILE_PATH="coverage/Kesgotd_screen_CountScore$Calculation_score.coverage" NAME="Calculation_score Coverage Results" MODIFIED="1537424707843" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/common" />
     <SUITE FILE_PATH="coverage/jiekou_pro$excel_pub.coverage" NAME="excel_pub Coverage Results" MODIFIED="1526291434199" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/common" />
@@ -41,7 +44,7 @@
     <SUITE FILE_PATH="coverage/Kesgotd_screen_CountScore$readexcel.coverage" NAME="readexcel Coverage Results" MODIFIED="1537318196893" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/common" />
     <SUITE FILE_PATH="coverage/Kesgotd_screen_CountScore$Mssql_pub.coverage" NAME="Mssql_pub Coverage Results" MODIFIED="1537328043252" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/common" />
     <SUITE FILE_PATH="coverage/Kesgotd_screen_CountScore$Generate_RandomCh.coverage" NAME="Generate_RandomCh Coverage Results" MODIFIED="1534486445444" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/common" />
-    <SUITE FILE_PATH="coverage/Kesgotd_screen_CountScore$run_all_case.coverage" NAME="run_all_case Coverage Results" MODIFIED="1537838103348" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Kesgotd_screen_CountScore$run_all_case.coverage" NAME="run_all_case Coverage Results" MODIFIED="1539083192182" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/jiekou_pro$Unittests_in_test_03.coverage" NAME="Unittests in test_03 Coverage Results" MODIFIED="1523436052614" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/case" />
     <SUITE FILE_PATH="coverage/Kesgotd_screen_CountScore$Unittests_in_Test_api.coverage" NAME="Unittests in Test_api Coverage Results" MODIFIED="1537332481754" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/case" />
   </component>
@@ -87,22 +90,24 @@
         <option value="$PROJECT_DIR$/case/Kesgo_Ifcode.py" />
         <option value="$PROJECT_DIR$/case/ts.py" />
         <option value="$PROJECT_DIR$/case/screen_test.py" />
-        <option value="$PROJECT_DIR$/common/Take_OtherToList.py" />
         <option value="$PROJECT_DIR$/case/Kesgo_debug.py" />
-        <option value="$PROJECT_DIR$/case/Kesgo_addstudent.py" />
-        <option value="$PROJECT_DIR$/common/Generate_Random.py" />
-        <option value="$PROJECT_DIR$/case/Kesgo_ifcode.py" />
         <option value="$PROJECT_DIR$/common/writeexcel.py" />
         <option value="$PROJECT_DIR$/common/logger.py" />
-        <option value="$PROJECT_DIR$/case/Kesgo_test.py" />
         <option value="$PROJECT_DIR$/common/readexcel.py" />
         <option value="$PROJECT_DIR$/config/readConfig.py" />
         <option value="$PROJECT_DIR$/common/Mssql_pub.py" />
-        <option value="$PROJECT_DIR$/case/test_case.py" />
-        <option value="$PROJECT_DIR$/case/Kesgo_screen.py" />
         <option value="$PROJECT_DIR$/common/Calculation_score.py" />
-        <option value="$PROJECT_DIR$/run_all_case.py" />
+        <option value="$PROJECT_DIR$/common/Generate_Random.py" />
+        <option value="$PROJECT_DIR$/case/Kesgo_addstudent.py" />
+        <option value="$PROJECT_DIR$/case/Kesgo_test.py" />
+        <option value="$PROJECT_DIR$/case/Kesgo_screen.py" />
+        <option value="$PROJECT_DIR$/case/Kesgo_Backstage/kesgo_screen.py" />
+        <option value="$PROJECT_DIR$/case/Kesgo_Backstage/kesgo_screen_para.py" />
         <option value="$PROJECT_DIR$/config/cfg.ini" />
+        <option value="$PROJECT_DIR$/common/Take_OtherToList.py" />
+        <option value="$PROJECT_DIR$/run_all_case.py" />
+        <option value="$PROJECT_DIR$/case/test_case.py" />
+        <option value="$PROJECT_DIR$/case/Kesgo_ifcode.py" />
       </list>
     </option>
   </component>
@@ -142,7 +147,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -232,8 +236,27 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Kesgotd_screen_CountScore" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Kesgotd_screen_CountScore" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="case" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Kesgo_Backstage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -244,15 +267,15 @@
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Administrator\PycharmProjects\Kesgotd_screen_CountScore\case\old_code" />
+      <recent name="C:\Users\Administrator\PycharmProjects\jiekou_pro\common" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Administrator\PycharmProjects\Kesgotd_screen_CountScore\case\Kesgo_Backstage" />
       <recent name="C:\Users\Administrator\PycharmProjects\Kesgotd_screen_CountScore\common" />
       <recent name="C:\Users\Administrator\PycharmProjects\tdKesgo_screen\case" />
       <recent name="C:\Users\Administrator\PycharmProjects\tdjiekou_pro\common" />
-      <recent name="C:\Users\Administrator\PycharmProjects\jiekou_pro\common" />
-      <recent name="C:\Users\Administrator\PycharmProjects\jiekou_pro" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Administrator\PycharmProjects\Kesgotd_screen_CountScore\case\old_code" />
       <recent name="C:\Users\Administrator\PycharmProjects\jiekou_pro\common" />
     </key>
   </component>
@@ -298,25 +321,7 @@
       <option name="USE_PARAM" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="Mssql_pub" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/common" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Kesgotd_screen_CountScore" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/common/Mssql_pub.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Unittests in Test_api" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="Unittest Test_api.test_totalscore" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs />
@@ -329,9 +334,9 @@
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/case/test_case.py" />
       <option name="CLASS_NAME" value="Test_api" />
-      <option name="METHOD_NAME" value="" />
+      <option name="METHOD_NAME" value="test_totalscore" />
       <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_CLASS" />
+      <option name="TEST_TYPE" value="TEST_METHOD" />
       <option name="PATTERN" value="" />
       <option name="USE_PATTERN" value="false" />
       <option name="PUREUNITTEST" value="true" />
@@ -339,20 +344,38 @@
       <option name="USE_PARAM" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="Calculation_score" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="Kesgo_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/common" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/case" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Kesgotd_screen_CountScore" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/common/Calculation_score.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/case/Kesgo_test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Kesgo_addstudent" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/case" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Kesgotd_screen_CountScore" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/case/Kesgo_addstudent.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -577,17 +600,17 @@
       <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in test_03" />
       <item index="1" class="java.lang.String" itemvalue="Python.run_all_case" />
       <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests in test_case" />
-      <item index="3" class="java.lang.String" itemvalue="Python.Mssql_pub" />
-      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests in Test_api" />
-      <item index="5" class="java.lang.String" itemvalue="Python.Calculation_score" />
+      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest Test_api.test_totalscore" />
+      <item index="4" class="java.lang.String" itemvalue="Python.Kesgo_test" />
+      <item index="5" class="java.lang.String" itemvalue="Python.Kesgo_addstudent" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.run_all_case" />
-        <item index="1" class="java.lang.String" itemvalue="Python.Calculation_score" />
-        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests in test_case" />
-        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in Test_api" />
-        <item index="4" class="java.lang.String" itemvalue="Python.Mssql_pub" />
+        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in test_case" />
+        <item index="2" class="java.lang.String" itemvalue="Python.Kesgo_addstudent" />
+        <item index="3" class="java.lang.String" itemvalue="Python.Kesgo_test" />
+        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest Test_api.test_totalscore" />
       </list>
     </recent_temporary>
   </component>
@@ -605,34 +628,34 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_in_Test_api - 2018.09.19 at 12h 48m 03s.xml">
-      <configuration name="Unittests in Test_api" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_test_case - 2018.09.19 at 10h 34m 52s.xml">
+    <history-entry file="Unittests_in_test_case - 2018.09.30 at 13h 30m 16s.xml">
       <configuration name="Unittests in test_case" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_case - 2018.09.19 at 10h 35m 58s.xml">
+    <history-entry file="Unittests_in_test_case - 2018.09.30 at 14h 52m 54s.xml">
       <configuration name="Unittests in test_case" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_case - 2018.09.19 at 10h 36m 06s.xml">
+    <history-entry file="Unittests_in_test_case - 2018.09.30 at 14h 59m 00s.xml">
       <configuration name="Unittests in test_case" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_case - 2018.09.19 at 10h 36m 15s.xml">
+    <history-entry file="Unittests_in_test_case - 2018.09.30 at 15h 17m 31s.xml">
       <configuration name="Unittests in test_case" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_case - 2018.09.19 at 10h 59m 17s.xml">
+    <history-entry file="Unittests_in_test_case - 2018.09.30 at 15h 30m 03s.xml">
       <configuration name="Unittests in test_case" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_case - 2018.09.19 at 10h 59m 22s.xml">
+    <history-entry file="Unittests_in_test_case - 2018.09.30 at 16h 26m 08s.xml">
       <configuration name="Unittests in test_case" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_case - 2018.09.19 at 12h 47m 02s.xml">
+    <history-entry file="Unittests_in_test_case - 2018.09.30 at 16h 58m 41s.xml">
       <configuration name="Unittests in test_case" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_case - 2018.09.19 at 12h 51m 02s.xml">
+    <history-entry file="Unittests_in_test_case - 2018.09.30 at 17h 16m 34s.xml">
       <configuration name="Unittests in test_case" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_case - 2018.09.19 at 12h 54m 54s.xml">
+    <history-entry file="Unittests_in_test_case - 2018.09.30 at 17h 32m 46s.xml">
+      <configuration name="Unittests in test_case" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_test_case - 2018.10.09 at 18h 42m 51s.xml">
       <configuration name="Unittests in test_case" configurationId="tests" />
     </history-entry>
   </component>
@@ -646,16 +669,16 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26285347" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19344473" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32885906" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.77956986" sideWeight="0.51028275" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32885906" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6827957" sideWeight="0.48971722" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45698926" sideWeight="0.48971722" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32885906" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -682,7 +705,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="64" />
+      <option name="time" value="65" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="tests">
@@ -723,41 +746,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/case/Kesgo_screen.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/case/Kesgo_ifcode.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="406" column="0" selection-start-line="406" selection-start-column="0" selection-end-line="406" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/case/old_code/FZhcode_old.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="68" column="12" selection-start-line="68" selection-start-column="12" selection-end-line="68" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/case/old_code/screen_test_old.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/case/Kesgo_screen.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/case/Kesgo_screen.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -818,13 +806,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="3.113821">
           <caret line="767" column="8" selection-start-line="767" selection-start-column="8" selection-end-line="767" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/case/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -898,20 +879,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/Take_OtherToList.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.053072624">
-          <caret line="3" column="14" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/Generate_Random.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25042883">
-          <caret line="29" column="12" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://D:/Anaconda/set/Lib/site-packages/tomorrow/tomorrow.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.55518395">
@@ -933,13 +900,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/case/Kesgo_addstudent.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8118812">
-          <caret line="183" column="0" selection-start-line="183" selection-start-column="0" selection-end-line="183" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/logs/2018_09_18.log">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.45907474">
@@ -951,27 +911,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/readexcel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="50" selection-start-line="3" selection-start-column="50" selection-end-line="3" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/readConfig.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/Mssql_pub.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8526971">
-          <caret line="92" column="0" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -996,41 +935,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/Calculation_score.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.8601398">
-          <caret line="70" column="3" selection-start-line="70" selection-start-column="3" selection-end-line="70" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/writeexcel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6111888">
-          <caret line="42" column="32" selection-start-line="42" selection-start-column="32" selection-end-line="42" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/run_all_case.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8405594">
-          <caret line="139" column="0" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/cfg.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.47832167">
-          <caret line="18" column="12" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/report/result_20180919091343.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1038,15 +946,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/logs/2018_09_25.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1054,53 +953,171 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="2.0993006">
           <caret line="80" column="0" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/case/Kesgo_ifcode.py">
+    <entry file="file://$PROJECT_DIR$/logs/2018_09_25.log">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.806993">
-          <caret line="20" column="37" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="37" />
-          <folding>
-            <marker date="1537163998440" expanded="true" signature="500:763" placeholder="select a.Exp... AFCS_Experiment" />
-            <marker date="1537163998440" expanded="true" signature="930:1015" placeholder="SELECT Class... AFCS_ClassSelect" />
-            <marker date="1537163998440" expanded="true" signature="1135:1277" placeholder="select Quest... AFCS_PolicyCaseQuestions" />
-            <marker date="1537163998440" expanded="true" signature="1295:1394" placeholder="select * fro... AFCS_PolicyCaseQuestions" />
-            <marker date="1537163998440" expanded="true" signature="1802:1883" placeholder="select Stude... AFCS_ClassStudents" />
-            <marker date="1537163998440" expanded="true" signature="4968:5041" placeholder="select Group... AFCS_Group" />
-            <marker date="1537163998440" expanded="true" signature="5903:6116" placeholder="select a.Gro... AFCS_Group" />
-            <marker date="1537163998440" expanded="true" signature="6209:6401" placeholder="select a.Gro... AFCS_Group" />
-          </folding>
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/case/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Anaconda/set/Lib/configparser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33277026">
+          <caret line="764" column="8" selection-start-line="764" selection-start-column="8" selection-end-line="764" selection-end-column="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/case/Kesgo_screen.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="3.6573427">
-          <caret line="316" column="16" selection-start-line="316" selection-start-column="16" selection-end-line="316" selection-end-column="16" />
-          <folding />
+        <state vertical-scroll-proportion="-2.8587196">
+          <caret line="238" column="15" selection-start-line="238" selection-start-column="15" selection-end-line="238" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/case/Kesgo_addstudent.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="202" column="38" selection-start-line="202" selection-start-column="38" selection-end-line="202" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/Calculation_score.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="81.166664">
+          <caret line="75" column="11" selection-start-line="75" selection-start-column="6" selection-end-line="75" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/Mssql_pub.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="30.5">
+          <caret line="27" column="17" selection-start-line="27" selection-start-column="12" selection-end-line="27" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/readexcel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="3.9">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/writeexcel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.24503312">
+          <caret line="42" column="40" selection-start-line="42" selection-start-column="40" selection-end-line="42" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/Take_OtherToList.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.46136865">
+          <caret line="42" column="11" selection-start-line="42" selection-start-column="11" selection-end-line="42" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/logs/2018_09_30.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5846154">
+          <caret line="22" column="57" selection-start-line="22" selection-start-column="57" selection-end-line="22" selection-end-column="57" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/case/Kesgo_test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.2419581">
-          <caret line="322" column="56" selection-start-line="322" selection-start-column="56" selection-end-line="322" selection-end-column="56" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="48" column="61" selection-start-line="48" selection-start-column="61" selection-end-line="48" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/readConfig.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6729776">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/Generate_Random.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6545454">
+          <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/cfg.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/case/Kesgo_Backstage/kesgo_screen_para.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.20316027">
+          <caret line="298" column="45" selection-start-line="298" selection-start-column="45" selection-end-line="298" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#30#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/case/test_case.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.2223777">
-          <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.584">
+          <caret line="37" column="10" selection-start-line="37" selection-start-column="10" selection-end-line="37" selection-end-column="10" />
           <folding>
-            <marker date="1537332892177" expanded="true" signature="892:1063" placeholder="select * fro... AFCS_StudentScore" />
-            <marker date="1537332892177" expanded="true" signature="1363:1534" placeholder="select * fro... AFCS_StudentScore" />
-            <marker date="1537332892177" expanded="true" signature="1840:2011" placeholder="select * fro... AFCS_StudentScore" />
-            <marker date="1537332892177" expanded="true" signature="2322:2493" placeholder="select * fro... AFCS_StudentScore" />
+            <marker date="1538299914556" expanded="true" signature="1094:1265" placeholder="select * fro... AFCS_StudentScore" />
+            <marker date="1538299914556" expanded="true" signature="1658:1829" placeholder="select * fro... AFCS_StudentScore" />
+            <marker date="1538299914556" expanded="true" signature="2135:2306" placeholder="select * fro... AFCS_StudentScore" />
+            <marker date="1538299914556" expanded="true" signature="2617:2788" placeholder="select * fro... AFCS_StudentScore" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/case/Kesgo_Backstage/kesgo_screen.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.216">
+          <caret line="51" column="24" selection-start-line="51" selection-start-column="24" selection-end-line="51" selection-end-column="24" />
+          <folding>
+            <element signature="e#22#74#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/case/Kesgo_ifcode.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.00979021">
+          <caret line="446" column="8" selection-start-line="446" selection-start-column="8" selection-end-line="446" selection-end-column="8" />
+          <folding>
+            <marker date="1539083182351" expanded="true" signature="500:763" placeholder="select a.Exp... AFCS_Experiment" />
+            <marker date="1539083182351" expanded="true" signature="930:1015" placeholder="SELECT Class... AFCS_ClassSelect" />
+            <marker date="1539083182351" expanded="true" signature="1135:1277" placeholder="select Quest... AFCS_PolicyCaseQuestions" />
+            <marker date="1539083182351" expanded="true" signature="1295:1394" placeholder="select * fro... AFCS_PolicyCaseQuestions" />
+            <marker date="1539083182351" expanded="true" signature="1802:1883" placeholder="select Stude... AFCS_ClassStudents" />
+            <marker date="1539083182351" expanded="true" signature="5144:5217" placeholder="select Group... AFCS_Group" />
+            <marker date="1539083182351" expanded="true" signature="6169:6453" placeholder="select a.Gro... AFCS_Group" />
+            <marker date="1539083182351" expanded="true" signature="6546:6738" placeholder="select a.Gro... AFCS_Group" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run_all_case.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.5013334">
+          <caret line="157" column="0" selection-start-line="157" selection-start-column="0" selection-end-line="157" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
