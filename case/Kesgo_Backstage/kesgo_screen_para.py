@@ -133,6 +133,7 @@ class Login():
          driver.find_element_by_xpath(".//*[@class='m-leftBar']/a[1]").click()
          sleep(4)
          driver.find_element_by_xpath(".//*[@class='m-leftBar']/a[2]").click()
+         sleep(4)
          driver.find_element_by_xpath(".//*[@class='u-button u-small f-corg']").click()
          frame_ele=driver.find_element_by_xpath(".//iframe[@class='jzart-iframe']")
          driver.switch_to.frame(frame_ele)

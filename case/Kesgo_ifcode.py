@@ -86,7 +86,8 @@ class ScreenOperationOne():
      # print(r.status_code)
 
  # def GetPreviewID(self):
-     url3 = "http://192.168.0.167/kesgo.Service/wcf/CaseService.svc/GetQuesByWhere"
+ #     url3 = "http://192.168.0.167/kesgo.Service/wcf/CaseService.svc/GetQuesByWhere"
+     url3 = urljoin(self.base_url,"kesgo.Service/wcf/CaseService.svc/GetQuesByWhere")
      par = {"expID":self.ExperimentID1,
             "stuID":stu
             }
@@ -107,7 +108,8 @@ class ScreenOperationOne():
 
  # def SubmitQuestion(self,d):
 #提交思考题
-     url2 = "http://192.168.0.167/kesgo.Service/wcf/CaseService.svc/SaveQuesAnswer"
+     # url2 = "http://192.168.0.167/kesgo.Service/wcf/CaseService.svc/SaveQuesAnswer"
+     url2 = urljoin(self.base_url,"kesgo.Service/wcf/CaseService.svc/SaveQuesAnswer")
      body2 = {"previewInfo":
      "[{\"PreviewID\":\""+d+"\","
      "\"ExperimentID\":\""+self.ExperimentID1+"\","
@@ -132,7 +134,8 @@ class ScreenOperationTmp():
        Bselgroup = self.A.mssql_getrows(sqlselgroup)
        self.Groupidlist = Bselgroup
  def JoinGroup(self,groupId,studentId):#观点分组
-       url = "http://192.168.0.167/kesgo.Service/wcf/DiscussionService.svc/JoinGroup"  # 问号前面的
+       # url = "http://192.168.0.167/kesgo.Service/wcf/DiscussionService.svc/JoinGroup"  # 问号前面的
+       url = urljoin(self.base_url,"kesgo.Service/wcf/DiscussionService.svc/JoinGroup")
        par = {
              "groupId":groupId,
              "studentId":studentId
@@ -190,7 +193,8 @@ class ScreenOperationTwo(ScreenOperationOne):
  def TLGruopleaderSpeak(self,GroupID,groupstu,groupOrderNo,groupName,GroupAnotherName,RealName):
 #观点讨论组长发言
     speakcontent = Unicode(random.randint(1,20))
-    url4 = "http://192.168.0.167/kesgo.Service/wcf/DiscussionService.svc/CreateSpeak"
+    # url4 = "http://192.168.0.167/kesgo.Service/wcf/DiscussionService.svc/CreateSpeak"
+    url4 = urljoin(self.base_url,"kesgo.Service/wcf/DiscussionService.svc/CreateSpeak")
     body4 = {"speakEntity":
              "{\"SpeakID\":\"00000000-0000-0000-0000-000000000000\","
              "\"GroupID\":\""+GroupID+"\","
@@ -220,7 +224,8 @@ class ScreenOperationTwo(ScreenOperationOne):
 
  def TLInteractionSpeak(self,stu):
 #观点讨论我的互动
-    url5 = "http://192.168.0.167/kesgo.Service/wcf/DiscussionService.svc/CreateTimeInteraction"
+    # url5 = "http://192.168.0.167/kesgo.Service/wcf/DiscussionService.svc/CreateTimeInteraction"
+    url5 = urljoin(self.base_url,"kesgo.Service/wcf/DiscussionService.svc/CreateTimeInteraction")
     body5 = {"timeInteractionEntity":
              "{\"TimeInteractionID\":\"00000000-0000-0000-0000-000000000000\","
              "\"InteractionContent\":\""+Unicode(random.randint(1,20))+"\","
@@ -239,7 +244,8 @@ class ScreenOperationTwo(ScreenOperationOne):
 
  def AaskB(self,GroupID,GroupName,toGroupID,toGroupName,StudentID,GroupOrderNo):
 #组间博弈提问A→B
-    url6 = "http://192.168.0.167/kesgo.Service/wcf/DiscussionService.svc/CreateAsk"
+    # url6 = "http://192.168.0.167/kesgo.Service/wcf/DiscussionService.svc/CreateAsk"
+    url6 = urljoin(self.base_url,"kesgo.Service/wcf/DiscussionService.svc/CreateAsk")
     body6 = {"askEntity":
              "{\"AskQuestionID\":\"00000000-0000-0000-0000-000000000000\","
              "\"AskGroupID\":\""+GroupID+"\","
@@ -264,7 +270,8 @@ class ScreenOperationTwo(ScreenOperationOne):
 
  def BaskA(self):
 #组间博弈提问B→A
-    url61 = "http://192.168.0.167/kesgo.Service/wcf/DiscussionService.svc/CreateAsk"
+    # url61 = "http://192.168.0.167/kesgo.Service/wcf/DiscussionService.svc/CreateAsk"
+    url61 = urljoin(self.base_url,"kesgo.Service/wcf/DiscussionService.svc/CreateAsk")
     h61 = {
       "Accept": "application/json, text/plain, */*",
       "User-Agent": "Mozilla/5.0 (Linux; Android 7.1.1; MI 6 Build/NMF26X; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/58.0.3029.83 Mobile Safari/537.36",
@@ -284,7 +291,7 @@ class ScreenOperationTwo(ScreenOperationOne):
              "\"Grade\":0,"
              "\"IsDelete\":2}"}
     r61 = self.s.post(url61, json=body61, headers=h61)
-    #print(r61.text) # AskQuestionID
+    # print(r61.text) # AskQuestionID
     AskQuestionIDB_A = r61.text
     # print(r61.text)
     # print(r61.status_code)
@@ -297,7 +304,8 @@ class ScreenOperationTwo(ScreenOperationOne):
 #AskQuestionIDB_A = "82A08B5F-5627-4BAA-97EC-68AD6C94E91C"
 #组间博弈回答A回答
  def Aanswer(self,AskQuestionID,StudentID,GroupID,GroupName,GroupOrderNo):
-    url7 = "http://192.168.0.167/kesgo.Service/wcf/DiscussionService.svc/CreateAnswer"
+    # url7 = "http://192.168.0.167/kesgo.Service/wcf/DiscussionService.svc/CreateAnswer"
+    url7 = urljoin(self.base_url,"kesgo.Service/wcf/DiscussionService.svc/CreateAnswer")
     body7 ={"answerEntity":
             "{\"AnswerID\":\"00000000-0000-0000-0000-000000000000\","
             "\"AnswerrGroupID\":\"00000000-0000-0000-0000-000000000000\","
@@ -329,7 +337,8 @@ class ScreenOperationTwo(ScreenOperationOne):
 
  def Banswer(self,AskQuestionIDA_B):
 #组间博弈回答B回答
-    url8 = "http://192.168.0.167/kesgo.Service/wcf/DiscussionService.svc/CreateAnswer"
+    # url8 = "http://192.168.0.167/kesgo.Service/wcf/DiscussionService.svc/CreateAnswer"
+    url8 = urljoin(self.base_url,"kesgo.Service/wcf/DiscussionService.svc/CreateAnswer")
     body8 ={"answerEntity":
             "{\"AnswerID\":\"00000000-0000-0000-0000-000000000000\","
             "\"AnswerrGroupID\":\"00000000-0000-0000-0000-000000000000\","
@@ -361,7 +370,8 @@ class ScreenOperationTwo(ScreenOperationOne):
 
  def ZDGruopleaderSpeak(self,GroupID,GroupOrderNo,GroupName,StudentID):
 #诊断总结组长发言
-    url9 = "http://192.168.0.167/kesgo.Service/wcf/DiagnoseService.svc/SaveSpeakData"
+    # url9 = "http://192.168.0.167/kesgo.Service/wcf/DiagnoseService.svc/SaveSpeakData"
+    url9 = urljoin(self.base_url,"kesgo.Service/wcf/DiagnoseService.svc/SaveSpeakData")
     body9 = {"speakInfo":
             "{\"GroupID\":\""+GroupID+"\","
             "\"SpeakContent\":\""+Unicode(random.randint(1,20))+"\","
@@ -390,7 +400,8 @@ class ScreenOperationTwo(ScreenOperationOne):
 
  def ZDInteractionSpeak(self,GroupID,GroupOrderNo,GroupName,StudentID):
 #诊断总结我的互动
-    url10 = "http://192.168.0.167/kesgo.Service/wcf/DiagnoseService.svc/SaveSpeakData"
+    # url10 = "http://192.168.0.167/kesgo.Service/wcf/DiagnoseService.svc/SaveSpeakData"
+    url10 = urljoin(self.base_url,"kesgo.Service/wcf/DiagnoseService.svc/SaveSpeakData")
     body10 ={"speakInfo":
             "{\"GroupID\":\""+GroupID+"\","
             "\"SpeakContent\":\""+Unicode(random.randint(1,20))+"\","
@@ -419,7 +430,8 @@ class ScreenOperationTwo(ScreenOperationOne):
 
  def Groupvote(self,StudentID,toGroupID):
 #小组投票
-    url11 = "http://192.168.0.167/kesgo.Service/wcf/CoursePerformService.svc/InsertGroupEvaluation"
+    # url11 = "http://192.168.0.167/kesgo.Service/wcf/CoursePerformService.svc/InsertGroupEvaluation"
+    url11 = urljoin(self.base_url,"kesgo.Service/wcf/CoursePerformService.svc/InsertGroupEvaluation")
     par11 = {"stuID":StudentID,
          "groupID":toGroupID }
     h11 = {
@@ -431,7 +443,8 @@ class ScreenOperationTwo(ScreenOperationOne):
 
  def Personalvote(self,StudentID,toStudentID):
 #个人投票
-    url12 = "http://192.168.0.167/kesgo.Service/wcf/CoursePerformService.svc/AddStudentVote"
+    # url12 = "http://192.168.0.167/kesgo.Service/wcf/CoursePerformService.svc/AddStudentVote"
+    url12 = urljoin(self.base_url,"kesgo.Service/wcf/CoursePerformService.svc/AddStudentVote")
     par12 = {"expID":self.ExperimentID1,
          "stuID":StudentID,
          "excellenceID":toStudentID }

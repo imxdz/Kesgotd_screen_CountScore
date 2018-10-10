@@ -113,10 +113,14 @@ if __name__ == "__main__":
     from config import readConfig
 
     base_url = readConfig.base_url
+
     # mb = readConfig.mb
     # exname = readConfig.exname
+
     mb = tecphone_num()
     exname = Unicode(3)
+    print("生成的手机号码是%s"%mb)
+    print("生成的实验名是%s"%exname)
     cur_path = os.path.dirname(os.path.realpath(__file__))
     configPath = os.path.join(cur_path,"config\\cfg.ini")
     conf = configparser.ConfigParser()
@@ -125,6 +129,7 @@ if __name__ == "__main__":
     conf.write(open(configPath, "r+"))
 
     kesgo_screen.backstage(base_url,mb,exname)
+
     Kesgo_test.wexcel(base_url,mb,exname)
     all_case = add_case(caseName="case", rule="test*.py")   #  加载用例
     # # 生成测试报告的路径

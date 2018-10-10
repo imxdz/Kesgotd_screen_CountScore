@@ -1,0 +1,1311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>自动化测试报告,测试结果如下：</title>
+    <meta name="generator" content="HTMLTestRunner 0.8.3"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    
+<style type="text/css" media="screen">
+body        { font-family: verdana, arial, helvetica, sans-serif; font-size: 80%; }
+table       { font-size: 100%; }
+pre         { }
+
+/* -- heading ---------------------------------------------------------------------- */
+h1 {
+	font-size: 16pt;
+	color: gray;
+}
+.heading {
+    margin-top: 0ex;
+    margin-bottom: 1ex;
+}
+
+.heading .attribute {
+    margin-top: 1ex;
+    margin-bottom: 0;
+}
+
+.heading .description {
+    margin-top: 4ex;
+    margin-bottom: 6ex;
+}
+
+/* -- css div popup ------------------------------------------------------------------------ */
+a.popup_link {
+}
+
+a.popup_link:hover {
+    color: red;
+}
+.img{
+	width: 100%;
+	height: 100%;
+	border-collapse: collapse;
+    border: 2px solid #777;
+}
+
+.screenshots {
+    z-index: 100;
+	position:absolute;
+	left: 23%;
+	top: 20%;
+	display: none;
+}
+.close_shots {
+	position:absolute;
+	top:0; left:98%;
+	z-index:99;
+	width:20px;
+}
+.popup_window {
+    display: none;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    /*border: solid #627173 1px; */
+    padding: 10px;
+    background-color: #E6E6D6;
+    font-family: "Lucida Console", "Courier New", Courier, monospace;
+    text-align: left;
+    font-size: 8pt;
+    width: 500px;
+}
+
+}
+/* -- report ------------------------------------------------------------------------ */
+#show_detail_line {
+    margin-top: 3ex;
+    margin-bottom: 1ex;
+}
+#result_table {
+    width: 80%;
+    border-collapse: collapse;
+    border: 1px solid #777;
+}
+#header_row {
+    font-weight: bold;
+    color: white;
+    background-color: #777;
+}
+#result_table td {
+    border: 1px solid #777;
+    padding: 2px;
+}
+#total_row  { font-weight: bold; }
+.passClass  { background-color: #6c6; }
+.failClass  { background-color: #c60; }
+.errorClass { background-color: #c00; }
+.passCase   { color: #6c6; }
+.failCase   { color: #c60; font-weight: bold; }
+.errorCase  { color: #c00; font-weight: bold; }
+.hiddenRow  { display: none; }
+.testcase   { margin-left: 2em; }
+
+
+/* -- ending ---------------------------------------------------------------------- */
+#ending {
+}
+
+
+.piechart{
+    position:absolute;  ;
+    top:20px;
+    left:300px;
+    width: 200px;
+    float: left;
+    display:  inline;
+}
+
+
+</style>
+
+</head>
+<body>
+<script language="javascript" type="text/javascript">
+output_list = Array();
+
+/* level - 0:Summary; 1:Failed; 2:All */
+function showCase(level) {
+    trs = document.getElementsByTagName("tr");
+    for (var i = 0; i < trs.length; i++) {
+        tr = trs[i];
+        id = tr.id;
+        if (id.substr(0,2) == 'ft') {
+            if (level < 1) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+        if (id.substr(0,2) == 'pt') {
+            if (level > 1) {
+                tr.className = '';
+            }
+            else {
+                tr.className = 'hiddenRow';
+            }
+        }
+    }
+}
+
+
+function showClassDetail(cid, count) {
+    var id_list = Array(count);
+    var toHide = 1;
+    for (var i = 0; i < count; i++) {
+        tid0 = 't' + cid.substr(1) + '.' + (i+1);
+        tid = 'f' + tid0;
+        tr = document.getElementById(tid);
+        if (!tr) {
+            tid = 'p' + tid0;
+            tr = document.getElementById(tid);
+        }
+        id_list[i] = tid;
+        if (tr.className) {
+            toHide = 0;
+        }
+    }
+    for (var i = 0; i < count; i++) {
+        tid = id_list[i];
+        if (toHide) {
+            document.getElementById('div_'+tid).style.display = 'none'
+            document.getElementById(tid).className = 'hiddenRow';
+        }
+        else {
+            document.getElementById(tid).className = '';
+        }
+    }
+}
+
+
+function showTestDetail(div_id){
+    var details_div = document.getElementById(div_id)
+    var displayState = details_div.style.display
+    // alert(displayState)
+    if (displayState != 'block' ) {
+        displayState = 'block'
+        details_div.style.display = 'block'
+    }
+    else {
+        details_div.style.display = 'none'
+    }
+}
+
+
+function html_escape(s) {
+    s = s.replace(/&/g,'&amp;');
+    s = s.replace(/</g,'&lt;');
+    s = s.replace(/>/g,'&gt;');
+    return s;
+}
+
+function drawCircle(pass, fail, error){
+    var color = ["#6c6","#c60","#c00"];
+    var data = [pass,fail,error];
+    var text_arr = ["pass", "fail", "error"];
+
+    var canvas = document.getElementById("circle");
+    var ctx = canvas.getContext("2d");
+    var startPoint=0;
+    var width = 20, height = 10;
+    var posX = 112 * 2 + 20, posY = 30;
+    var textX = posX + width + 5, textY = posY + 10;
+    for(var i=0;i<data.length;i++){
+        ctx.fillStyle = color[i];
+        ctx.beginPath();
+        ctx.moveTo(112,84);
+        ctx.arc(112,84,84,startPoint,startPoint+Math.PI*2*(data[i]/(data[0]+data[1]+data[2])),false);
+        ctx.fill();
+        startPoint += Math.PI*2*(data[i]/(data[0]+data[1]+data[2]));
+        ctx.fillStyle = color[i];
+        ctx.fillRect(posX, posY + 20 * i, width, height);
+        ctx.moveTo(posX, posY + 20 * i);
+        ctx.font = 'bold 14px';
+        ctx.fillStyle = color[i];
+        var percent = text_arr[i] + ":"+data[i];
+        ctx.fillText(percent, textX, textY + 20 * i);
+
+    }
+}
+
+function show_shots(obj) {
+	obj.nextElementSibling.style.display="block";
+
+}
+
+function close_shots(obj) {
+	obj.parentElement.style.display="none";
+}
+
+</script>
+<div class="piechart">
+    <div>
+        <canvas id="circle" width="350" height="168" </canvas>
+    </div>
+</div>
+<div class='heading'>
+<h1>自动化测试报告,测试结果如下：</h1>
+<p class='attribute'><strong>开始时间:</strong> 2018-10-09 19:16:38</p>
+<p class='attribute'><strong>耗时:</strong> 0:00:00.098006</p>
+<p class='attribute'><strong>状态:</strong> <span class="tj passCase">Pass</span>36</p>
+
+<p class='description'>用例执行情况如下：</p>
+</div>
+
+
+
+<p id='show_detail_line'>显示
+<a href='javascript:showCase(0)'>概要</a>
+<a href='javascript:showCase(1)'>失败</a>
+<a href='javascript:showCase(2)'>所有</a>
+</p>
+
+<table id='result_table'>
+<colgroup>
+<col align='left' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+</colgroup>
+<tr id='header_row'>
+    <td>测试组/测试用例</td>
+    <td>总数</td>
+    <td>通过</td>
+    <td>失败</td>
+    <td>错误</td>
+    <td>视图</td>
+    <td>错误截图</td>
+</tr>
+
+<tr class='passClass'>
+    <td>test_case.Test_api</td>
+    <td>36</td>
+    <td>36</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c1',36)">详情</a></td>
+    <td>&nbsp;</td>
+</tr>
+
+<tr id='pt1.1' class='hiddenRow'>
+    <td ><div class='testcase'>test_classdiscuss_1</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status passCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.1')" >
+        通过</a></span>
+
+    <div id='div_pt1.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.1: 课堂讨论是19.0 库里课堂讨论是19.0
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='pt1.2' class='hiddenRow'>
+    <td ><div class='testcase'>test_classdiscuss_2</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status passCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.2')" >
+        通过</a></span>
+
+    <div id='div_pt1.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.2: 课堂讨论是34.5 库里课堂讨论是34.5
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='pt1.3' class='hiddenRow'>
+    <td ><div class='testcase'>test_classdiscuss_3</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status passCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.3')" >
+        通过</a></span>
+
+    <div id='div_pt1.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.3: 课堂讨论是32.0 库里课堂讨论是32.0
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='pt1.4' class='hiddenRow'>
+    <td ><div class='testcase'>test_classdiscuss_4</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status passCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.4')" >
+        通过</a></span>
+
+    <div id='div_pt1.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.4: 课堂讨论是18.25 库里课堂讨论是18.25
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='pt1.5' class='hiddenRow'>
+    <td ><div class='testcase'>test_classdiscuss_5</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status passCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.5')" >
+        通过</a></span>
+
+    <div id='div_pt1.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.5: 课堂讨论是0.0 库里课堂讨论是0.0
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='pt1.6' class='hiddenRow'>
+    <td ><div class='testcase'>test_classdiscuss_6</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status passCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.6')" >
+        通过</a></span>
+
+    <div id='div_pt1.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.6: 课堂讨论是19.25 库里课堂讨论是19.25
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='pt1.7' class='hiddenRow'>
+    <td ><div class='testcase'>test_classdiscuss_7</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status passCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.7')" >
+        通过</a></span>
+
+    <div id='div_pt1.7' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.7').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.7: 课堂讨论是29.0 库里课堂讨论是29.0
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='pt1.8' class='hiddenRow'>
+    <td ><div class='testcase'>test_classdiscuss_8</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status passCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.8')" >
+        通过</a></span>
+
+    <div id='div_pt1.8' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.8').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.8: 课堂讨论是14.0 库里课堂讨论是14.0
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='pt1.9' class='hiddenRow'>
+    <td ><div class='testcase'>test_classdiscuss_9</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status passCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.9')" >
+        通过</a></span>
+
+    <div id='div_pt1.9' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.9').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.9: 课堂讨论是46.0 库里课堂讨论是46.0
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='pt1.10' class='hiddenRow'>
+    <td ><div class='testcase'>test_groupperform_1</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status passCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.10')" >
+        通过</a></span>
+
+    <div id='div_pt1.10' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.10').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.10: 小组表现是9.5 库里小组表现是9.5
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='pt1.11' class='hiddenRow'>
+    <td ><div class='testcase'>test_groupperform_2</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status passCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.11')" >
+        通过</a></span>
+
+    <div id='div_pt1.11' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.11').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.11: 小组表现是0.0 库里小组表现是0.0
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='pt1.12' class='hiddenRow'>
+    <td ><div class='testcase'>test_groupperform_3</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status passCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.12')" >
+        通过</a></span>
+
+    <div id='div_pt1.12' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.12').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.12: 小组表现是0.0 库里小组表现是0.0
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='pt1.13' class='hiddenRow'>
+    <td ><div class='testcase'>test_groupperform_4</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status passCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.13')" >
+        通过</a></span>
+
+    <div id='div_pt1.13' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.13').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.13: 小组表现是11.05 库里小组表现是11.05
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='pt1.14' class='hiddenRow'>
+    <td ><div class='testcase'>test_groupperform_5</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status passCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.14')" >
+        通过</a></span>
+
+    <div id='div_pt1.14' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.14').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.14: 小组表现是11.05 库里小组表现是11.05
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='pt1.15' class='hiddenRow'>
+    <td ><div class='testcase'>test_groupperform_6</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status passCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.15')" >
+        通过</a></span>
+
+    <div id='div_pt1.15' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.15').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.15: 小组表现是0.0 库里小组表现是0.0
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='pt1.16' class='hiddenRow'>
+    <td ><div class='testcase'>test_groupperform_7</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status passCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.16')" >
+        通过</a></span>
+
+    <div id='div_pt1.16' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.16').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.16: 小组表现是10.0 库里小组表现是10.0
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='pt1.17' class='hiddenRow'>
+    <td ><div class='testcase'>test_groupperform_8</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status passCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.17')" >
+        通过</a></span>
+
+    <div id='div_pt1.17' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.17').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.17: 小组表现是9.5 库里小组表现是9.5
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='pt1.18' class='hiddenRow'>
+    <td ><div class='testcase'>test_groupperform_9</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status passCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.18')" >
+        通过</a></span>
+
+    <div id='div_pt1.18' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.18').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.18: 小组表现是0.0 库里小组表现是0.0
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='pt1.19' class='hiddenRow'>
+    <td ><div class='testcase'>test_personalperform_1</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status passCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.19')" >
+        通过</a></span>
+
+    <div id='div_pt1.19' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.19').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.19: 个人表现是3.5 库里个人表现是3.5
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='pt1.20' class='hiddenRow'>
+    <td ><div class='testcase'>test_personalperform_2</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status passCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.20')" >
+        通过</a></span>
+
+    <div id='div_pt1.20' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.20').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.20: 个人表现是4.75 库里个人表现是4.75
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='pt1.21' class='hiddenRow'>
+    <td ><div class='testcase'>test_personalperform_3</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status passCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.21')" >
+        通过</a></span>
+
+    <div id='div_pt1.21' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.21').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.21: 个人表现是4.5 库里个人表现是4.5
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='pt1.22' class='hiddenRow'>
+    <td ><div class='testcase'>test_personalperform_4</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status passCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.22')" >
+        通过</a></span>
+
+    <div id='div_pt1.22' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.22').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.22: 个人表现是8.0 库里个人表现是8.0
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='pt1.23' class='hiddenRow'>
+    <td ><div class='testcase'>test_personalperform_5</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status passCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.23')" >
+        通过</a></span>
+
+    <div id='div_pt1.23' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.23').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.23: 个人表现是3.25 库里个人表现是3.25
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='pt1.24' class='hiddenRow'>
+    <td ><div class='testcase'>test_personalperform_6</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status passCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.24')" >
+        通过</a></span>
+
+    <div id='div_pt1.24' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.24').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.24: 个人表现是4.5 库里个人表现是4.5
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='pt1.25' class='hiddenRow'>
+    <td ><div class='testcase'>test_personalperform_7</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status passCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.25')" >
+        通过</a></span>
+
+    <div id='div_pt1.25' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.25').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.25: 个人表现是8.5 库里个人表现是8.5
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='pt1.26' class='hiddenRow'>
+    <td ><div class='testcase'>test_personalperform_8</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status passCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.26')" >
+        通过</a></span>
+
+    <div id='div_pt1.26' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.26').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.26: 个人表现是9.0 库里个人表现是9.0
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='pt1.27' class='hiddenRow'>
+    <td ><div class='testcase'>test_personalperform_9</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status passCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.27')" >
+        通过</a></span>
+
+    <div id='div_pt1.27' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.27').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.27: 个人表现是5.0 库里个人表现是5.0
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='pt1.28' class='hiddenRow'>
+    <td ><div class='testcase'>test_totalscore_1</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status passCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.28')" >
+        通过</a></span>
+
+    <div id='div_pt1.28' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.28').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.28: sql是select * from dbo.AFCS_StudentScore a join dbo.AFCS_Experiment b on a.ExperimentID = b.ExperimentID where ExperimentName = '駑雬誈' and StudentID = '533c5182-fd11-4425-88dd-f4081cdf09ab'
+表里查询出的{'rowNum': 2, '学生id': '533c5182-fd11-4425-88dd-f4081cdf09ab', '思考题得分': 0.0, '思考题评分': 0.0, '发言得分': 0.0, '发言评分': 0.0, '提问、回答得分': 0.0, '提问、回答评分': 0.0, '诊断得分': 15.0, '诊断评分': 4.0, '小组投票得分': 9.5, '小组教师评分': 0.0, '个人投票得分': 0.0, '个人发言得分': 3.5, '课堂讨论': 19.0, '小组表现': 9.5, '个人表现': 3.5, '总分': 32.0}
+库里查询出的[(UUID('5b7a49d6-cbbb-4dc9-a2e2-1817367a3ae3'), UUID('32fcc63a-112b-4a84-b6a4-fe38df9d29e0'), UUID('533c5182-fd11-4425-88dd-f4081cdf09ab'), Decimal('0.00'), Decimal('0.00'), Decimal('0.00'), Decimal('19.00'), Decimal('0.00'), 0, Decimal('0.00'), Decimal('3.50'), Decimal('0.00'), Decimal('3.50'), Decimal('9.50'), Decimal('32.00'), Decimal('0.00'), UUID('32fcc63a-112b-4a84-b6a4-fe38df9d29e0'), '駑雬誈', UUID('8f499ce3-3c57-4eab-81c6-3f2b5b0f5790'), UUID('05973f0f-e095-451d-882b-23c17ae572c9'), UUID('a0eebc81-e78c-4a15-ad90-73b60cf891d8'), datetime.datetime(2018, 10, 9, 19, 10, 0, 840000), datetime.datetime(2018, 10, 9, 19, 16, 13, 320000), 3, 3, 4, 14, 6, datetime.datetime(2018, 10, 9, 19, 10, 26, 887000), UUID('0a1c49ac-78bd-4f5f-84fc-294e1cd312c6'), datetime.datetime(2018, 10, 9, 19, 9, 56, 667000), 2, 5, 10, 5, 5, 20, 5, 15, 20, 5, 15, 20, 5, 15, 15, 10, 5, 10, 5, 5, 15, 60, 25)]
+总分是32.0 库里总分是32.0
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='pt1.29' class='hiddenRow'>
+    <td ><div class='testcase'>test_totalscore_2</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status passCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.29')" >
+        通过</a></span>
+
+    <div id='div_pt1.29' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.29').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.29: sql是select * from dbo.AFCS_StudentScore a join dbo.AFCS_Experiment b on a.ExperimentID = b.ExperimentID where ExperimentName = '駑雬誈' and StudentID = '44a17764-291f-4f14-ac25-7abae478b38a'
+表里查询出的{'rowNum': 3, '学生id': '44a17764-291f-4f14-ac25-7abae478b38a', '思考题得分': 0.0, '思考题评分': 0.0, '发言得分': 14.25, '发言评分': 2.0, '提问、回答得分': 14.25, '提问、回答评分': 4.0, '诊断得分': 0.0, '诊断评分': 0.0, '小组投票得分': 0.0, '小组教师评分': 0.0, '个人投票得分': 0.0, '个人发言得分': 4.75, '课堂讨论': 34.5, '小组表现': 0.0, '个人表现': 4.75, '总分': 39.25}
+库里查询出的[(UUID('be1c04f2-6c7f-43ff-8a87-f1612cb294a0'), UUID('32fcc63a-112b-4a84-b6a4-fe38df9d29e0'), UUID('44a17764-291f-4f14-ac25-7abae478b38a'), Decimal('0.00'), Decimal('0.00'), Decimal('0.00'), Decimal('34.50'), Decimal('0.00'), 0, Decimal('0.00'), Decimal('4.75'), Decimal('0.00'), Decimal('4.75'), Decimal('0.00'), Decimal('39.25'), Decimal('0.00'), UUID('32fcc63a-112b-4a84-b6a4-fe38df9d29e0'), '駑雬誈', UUID('8f499ce3-3c57-4eab-81c6-3f2b5b0f5790'), UUID('05973f0f-e095-451d-882b-23c17ae572c9'), UUID('a0eebc81-e78c-4a15-ad90-73b60cf891d8'), datetime.datetime(2018, 10, 9, 19, 10, 0, 840000), datetime.datetime(2018, 10, 9, 19, 16, 13, 320000), 3, 3, 4, 14, 6, datetime.datetime(2018, 10, 9, 19, 10, 26, 887000), UUID('0a1c49ac-78bd-4f5f-84fc-294e1cd312c6'), datetime.datetime(2018, 10, 9, 19, 9, 56, 667000), 2, 5, 10, 5, 5, 20, 5, 15, 20, 5, 15, 20, 5, 15, 15, 10, 5, 10, 5, 5, 15, 60, 25)]
+总分是39.25 库里总分是39.25
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='pt1.30' class='hiddenRow'>
+    <td ><div class='testcase'>test_totalscore_3</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status passCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.30')" >
+        通过</a></span>
+
+    <div id='div_pt1.30' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.30').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.30: sql是select * from dbo.AFCS_StudentScore a join dbo.AFCS_Experiment b on a.ExperimentID = b.ExperimentID where ExperimentName = '駑雬誈' and StudentID = '4d7d5ffb-2567-4d55-8538-7a4f6c125f82'
+表里查询出的{'rowNum': 4, '学生id': '4d7d5ffb-2567-4d55-8538-7a4f6c125f82', '思考题得分': 0.0, '思考题评分': 0.0, '发言得分': 13.5, '发言评分': 0.0, '提问、回答得分': 15.0, '提问、回答评分': 3.5, '诊断得分': 0.0, '诊断评分': 0.0, '小组投票得分': 0.0, '小组教师评分': 0.0, '个人投票得分': 0.0, '个人发言得分': 4.5, '课堂讨论': 32.0, '小组表现': 0.0, '个人表现': 4.5, '总分': 36.5}
+库里查询出的[(UUID('dcf99829-e5eb-45cd-94ef-cf2e498c0cbd'), UUID('32fcc63a-112b-4a84-b6a4-fe38df9d29e0'), UUID('4d7d5ffb-2567-4d55-8538-7a4f6c125f82'), Decimal('0.00'), Decimal('0.00'), Decimal('0.00'), Decimal('32.00'), Decimal('0.00'), 0, Decimal('0.00'), Decimal('4.50'), Decimal('0.00'), Decimal('4.50'), Decimal('0.00'), Decimal('36.50'), Decimal('0.00'), UUID('32fcc63a-112b-4a84-b6a4-fe38df9d29e0'), '駑雬誈', UUID('8f499ce3-3c57-4eab-81c6-3f2b5b0f5790'), UUID('05973f0f-e095-451d-882b-23c17ae572c9'), UUID('a0eebc81-e78c-4a15-ad90-73b60cf891d8'), datetime.datetime(2018, 10, 9, 19, 10, 0, 840000), datetime.datetime(2018, 10, 9, 19, 16, 13, 320000), 3, 3, 4, 14, 6, datetime.datetime(2018, 10, 9, 19, 10, 26, 887000), UUID('0a1c49ac-78bd-4f5f-84fc-294e1cd312c6'), datetime.datetime(2018, 10, 9, 19, 9, 56, 667000), 2, 5, 10, 5, 5, 20, 5, 15, 20, 5, 15, 20, 5, 15, 15, 10, 5, 10, 5, 5, 15, 60, 25)]
+总分是36.5 库里总分是36.5
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='pt1.31' class='hiddenRow'>
+    <td ><div class='testcase'>test_totalscore_4</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status passCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.31')" >
+        通过</a></span>
+
+    <div id='div_pt1.31' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.31').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.31: sql是select * from dbo.AFCS_StudentScore a join dbo.AFCS_Experiment b on a.ExperimentID = b.ExperimentID where ExperimentName = '駑雬誈' and StudentID = 'ee20f78e-857e-4af0-8218-3b98f498dbf7'
+表里查询出的{'rowNum': 5, '学生id': 'ee20f78e-857e-4af0-8218-3b98f498dbf7', '思考题得分': 0.0, '思考题评分': 0.0, '发言得分': 0.0, '发言评分': 0.0, '提问、回答得分': 14.25, '提问、回答评分': 4.0, '诊断得分': 0.0, '诊断评分': 0.0, '小组投票得分': 9.5, '小组教师评分': 1.55, '个人投票得分': 5.0, '个人发言得分': 3.0, '课堂讨论': 18.25, '小组表现': 11.05, '个人表现': 8.0, '总分': 37.3}
+库里查询出的[(UUID('a8019a8a-1ded-4435-bf6b-7e49b7eee7bb'), UUID('32fcc63a-112b-4a84-b6a4-fe38df9d29e0'), UUID('ee20f78e-857e-4af0-8218-3b98f498dbf7'), Decimal('0.00'), Decimal('0.00'), Decimal('0.00'), Decimal('18.25'), Decimal('0.00'), 0, Decimal('0.00'), Decimal('8.00'), Decimal('5.00'), Decimal('3.00'), Decimal('11.05'), Decimal('37.30'), Decimal('0.00'), UUID('32fcc63a-112b-4a84-b6a4-fe38df9d29e0'), '駑雬誈', UUID('8f499ce3-3c57-4eab-81c6-3f2b5b0f5790'), UUID('05973f0f-e095-451d-882b-23c17ae572c9'), UUID('a0eebc81-e78c-4a15-ad90-73b60cf891d8'), datetime.datetime(2018, 10, 9, 19, 10, 0, 840000), datetime.datetime(2018, 10, 9, 19, 16, 13, 320000), 3, 3, 4, 14, 6, datetime.datetime(2018, 10, 9, 19, 10, 26, 887000), UUID('0a1c49ac-78bd-4f5f-84fc-294e1cd312c6'), datetime.datetime(2018, 10, 9, 19, 9, 56, 667000), 2, 5, 10, 5, 5, 20, 5, 15, 20, 5, 15, 20, 5, 15, 15, 10, 5, 10, 5, 5, 15, 60, 25)]
+总分是37.3 库里总分是37.3
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='pt1.32' class='hiddenRow'>
+    <td ><div class='testcase'>test_totalscore_5</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status passCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.32')" >
+        通过</a></span>
+
+    <div id='div_pt1.32' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.32').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.32: sql是select * from dbo.AFCS_StudentScore a join dbo.AFCS_Experiment b on a.ExperimentID = b.ExperimentID where ExperimentName = '駑雬誈' and StudentID = '7fdda145-681b-4ea9-b0e3-6ffab62fd61b'
+表里查询出的{'rowNum': 6, '学生id': '7fdda145-681b-4ea9-b0e3-6ffab62fd61b', '思考题得分': 0.0, '思考题评分': 0.0, '发言得分': 0.0, '发言评分': 0.0, '提问、回答得分': 0.0, '提问、回答评分': 0.0, '诊断得分': 0.0, '诊断评分': 0.0, '小组投票得分': 9.5, '小组教师评分': 1.55, '个人投票得分': 0.0, '个人发言得分': 3.25, '课堂讨论': 0.0, '小组表现': 11.05, '个人表现': 3.25, '总分': 14.3}
+库里查询出的[(UUID('03af1bf2-f17d-419b-aacd-65d2457dab8d'), UUID('32fcc63a-112b-4a84-b6a4-fe38df9d29e0'), UUID('7fdda145-681b-4ea9-b0e3-6ffab62fd61b'), Decimal('0.00'), Decimal('0.00'), Decimal('0.00'), Decimal('0.00'), Decimal('0.00'), 0, Decimal('0.00'), Decimal('3.25'), Decimal('0.00'), Decimal('3.25'), Decimal('11.05'), Decimal('14.30'), Decimal('0.00'), UUID('32fcc63a-112b-4a84-b6a4-fe38df9d29e0'), '駑雬誈', UUID('8f499ce3-3c57-4eab-81c6-3f2b5b0f5790'), UUID('05973f0f-e095-451d-882b-23c17ae572c9'), UUID('a0eebc81-e78c-4a15-ad90-73b60cf891d8'), datetime.datetime(2018, 10, 9, 19, 10, 0, 840000), datetime.datetime(2018, 10, 9, 19, 16, 13, 320000), 3, 3, 4, 14, 6, datetime.datetime(2018, 10, 9, 19, 10, 26, 887000), UUID('0a1c49ac-78bd-4f5f-84fc-294e1cd312c6'), datetime.datetime(2018, 10, 9, 19, 9, 56, 667000), 2, 5, 10, 5, 5, 20, 5, 15, 20, 5, 15, 20, 5, 15, 15, 10, 5, 10, 5, 5, 15, 60, 25)]
+总分是14.3 库里总分是14.3
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='pt1.33' class='hiddenRow'>
+    <td ><div class='testcase'>test_totalscore_6</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status passCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.33')" >
+        通过</a></span>
+
+    <div id='div_pt1.33' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.33').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.33: sql是select * from dbo.AFCS_StudentScore a join dbo.AFCS_Experiment b on a.ExperimentID = b.ExperimentID where ExperimentName = '駑雬誈' and StudentID = '8bcf4503-88ec-42cc-a0fb-c72213fb78db'
+表里查询出的{'rowNum': 7, '学生id': '8bcf4503-88ec-42cc-a0fb-c72213fb78db', '思考题得分': 0.0, '思考题评分': 0.0, '发言得分': 0.0, '发言评分': 0.0, '提问、回答得分': 14.25, '提问、回答评分': 5.0, '诊断得分': 0.0, '诊断评分': 0.0, '小组投票得分': 0.0, '小组教师评分': 0.0, '个人投票得分': 0.0, '个人发言得分': 4.5, '课堂讨论': 19.25, '小组表现': 0.0, '个人表现': 4.5, '总分': 23.75}
+库里查询出的[(UUID('f451588c-6ee9-4c47-b6eb-c908ce34119a'), UUID('32fcc63a-112b-4a84-b6a4-fe38df9d29e0'), UUID('8bcf4503-88ec-42cc-a0fb-c72213fb78db'), Decimal('0.00'), Decimal('0.00'), Decimal('0.00'), Decimal('19.25'), Decimal('0.00'), 0, Decimal('0.00'), Decimal('4.50'), Decimal('0.00'), Decimal('4.50'), Decimal('0.00'), Decimal('23.75'), Decimal('0.00'), UUID('32fcc63a-112b-4a84-b6a4-fe38df9d29e0'), '駑雬誈', UUID('8f499ce3-3c57-4eab-81c6-3f2b5b0f5790'), UUID('05973f0f-e095-451d-882b-23c17ae572c9'), UUID('a0eebc81-e78c-4a15-ad90-73b60cf891d8'), datetime.datetime(2018, 10, 9, 19, 10, 0, 840000), datetime.datetime(2018, 10, 9, 19, 16, 13, 320000), 3, 3, 4, 14, 6, datetime.datetime(2018, 10, 9, 19, 10, 26, 887000), UUID('0a1c49ac-78bd-4f5f-84fc-294e1cd312c6'), datetime.datetime(2018, 10, 9, 19, 9, 56, 667000), 2, 5, 10, 5, 5, 20, 5, 15, 20, 5, 15, 20, 5, 15, 15, 10, 5, 10, 5, 5, 15, 60, 25)]
+总分是23.75 库里总分是23.75
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='pt1.34' class='hiddenRow'>
+    <td ><div class='testcase'>test_totalscore_7</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status passCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.34')" >
+        通过</a></span>
+
+    <div id='div_pt1.34' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.34').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.34: sql是select * from dbo.AFCS_StudentScore a join dbo.AFCS_Experiment b on a.ExperimentID = b.ExperimentID where ExperimentName = '駑雬誈' and StudentID = '4cf6a311-d832-49d8-a127-4a9feb031292'
+表里查询出的{'rowNum': 8, '学生id': '4cf6a311-d832-49d8-a127-4a9feb031292', '思考题得分': 5.0, '思考题评分': 0.0, '发言得分': 0.0, '发言评分': 0.0, '提问、回答得分': 12.0, '提问、回答评分': 0.0, '诊断得分': 15.0, '诊断评分': 2.0, '小组投票得分': 10.0, '小组教师评分': 0.0, '个人投票得分': 4.5, '个人发言得分': 4.0, '课堂讨论': 29.0, '小组表现': 10.0, '个人表现': 8.5, '总分': 52.5}
+库里查询出的[(UUID('d595cb57-e637-497a-917a-600b42e81956'), UUID('32fcc63a-112b-4a84-b6a4-fe38df9d29e0'), UUID('4cf6a311-d832-49d8-a127-4a9feb031292'), Decimal('0.00'), Decimal('5.00'), Decimal('0.00'), Decimal('29.00'), Decimal('0.00'), 0, Decimal('0.00'), Decimal('8.50'), Decimal('4.50'), Decimal('4.00'), Decimal('10.00'), Decimal('52.50'), Decimal('0.00'), UUID('32fcc63a-112b-4a84-b6a4-fe38df9d29e0'), '駑雬誈', UUID('8f499ce3-3c57-4eab-81c6-3f2b5b0f5790'), UUID('05973f0f-e095-451d-882b-23c17ae572c9'), UUID('a0eebc81-e78c-4a15-ad90-73b60cf891d8'), datetime.datetime(2018, 10, 9, 19, 10, 0, 840000), datetime.datetime(2018, 10, 9, 19, 16, 13, 320000), 3, 3, 4, 14, 6, datetime.datetime(2018, 10, 9, 19, 10, 26, 887000), UUID('0a1c49ac-78bd-4f5f-84fc-294e1cd312c6'), datetime.datetime(2018, 10, 9, 19, 9, 56, 667000), 2, 5, 10, 5, 5, 20, 5, 15, 20, 5, 15, 20, 5, 15, 15, 10, 5, 10, 5, 5, 15, 60, 25)]
+总分是52.5 库里总分是52.5
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='pt1.35' class='hiddenRow'>
+    <td ><div class='testcase'>test_totalscore_8</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status passCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.35')" >
+        通过</a></span>
+
+    <div id='div_pt1.35' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.35').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.35: sql是select * from dbo.AFCS_StudentScore a join dbo.AFCS_Experiment b on a.ExperimentID = b.ExperimentID where ExperimentName = '駑雬誈' and StudentID = '57acbb89-1777-44ab-88f0-a6fe2e20ee90'
+表里查询出的{'rowNum': 9, '学生id': '57acbb89-1777-44ab-88f0-a6fe2e20ee90', '思考题得分': 0.0, '思考题评分': 0.0, '发言得分': 0.0, '发言评分': 0.0, '提问、回答得分': 12.0, '提问、回答评分': 2.0, '诊断得分': 0.0, '诊断评分': 0.0, '小组投票得分': 9.5, '小组教师评分': 0.0, '个人投票得分': 5.0, '个人发言得分': 4.0, '课堂讨论': 14.0, '小组表现': 9.5, '个人表现': 9.0, '总分': 32.5}
+库里查询出的[(UUID('3b40c7b8-da16-4b92-b6d8-b32e1a51aab0'), UUID('32fcc63a-112b-4a84-b6a4-fe38df9d29e0'), UUID('57acbb89-1777-44ab-88f0-a6fe2e20ee90'), Decimal('0.00'), Decimal('0.00'), Decimal('0.00'), Decimal('14.00'), Decimal('0.00'), 0, Decimal('0.00'), Decimal('9.00'), Decimal('5.00'), Decimal('4.00'), Decimal('9.50'), Decimal('32.50'), Decimal('0.00'), UUID('32fcc63a-112b-4a84-b6a4-fe38df9d29e0'), '駑雬誈', UUID('8f499ce3-3c57-4eab-81c6-3f2b5b0f5790'), UUID('05973f0f-e095-451d-882b-23c17ae572c9'), UUID('a0eebc81-e78c-4a15-ad90-73b60cf891d8'), datetime.datetime(2018, 10, 9, 19, 10, 0, 840000), datetime.datetime(2018, 10, 9, 19, 16, 13, 320000), 3, 3, 4, 14, 6, datetime.datetime(2018, 10, 9, 19, 10, 26, 887000), UUID('0a1c49ac-78bd-4f5f-84fc-294e1cd312c6'), datetime.datetime(2018, 10, 9, 19, 9, 56, 667000), 2, 5, 10, 5, 5, 20, 5, 15, 20, 5, 15, 20, 5, 15, 15, 10, 5, 10, 5, 5, 15, 60, 25)]
+总分是32.5 库里总分是32.5
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='pt1.36' class='hiddenRow'>
+    <td ><div class='testcase'>test_totalscore_9</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status passCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.36')" >
+        通过</a></span>
+
+    <div id='div_pt1.36' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.36').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.36: sql是select * from dbo.AFCS_StudentScore a join dbo.AFCS_Experiment b on a.ExperimentID = b.ExperimentID where ExperimentName = '駑雬誈' and StudentID = '707a589e-3737-4359-a765-543c48bf2a04'
+表里查询出的{'rowNum': 10, '学生id': '707a589e-3737-4359-a765-543c48bf2a04', '思考题得分': 5.0, '思考题评分': 4.0, '发言得分': 15.0, '发言评分': 0.0, '提问、回答得分': 12.0, '提问、回答评分': 4.0, '诊断得分': 15.0, '诊断评分': 0.0, '小组投票得分': 0.0, '小组教师评分': 0.0, '个人投票得分': 0.0, '个人发言得分': 5.0, '课堂讨论': 46.0, '小组表现': 0.0, '个人表现': 5.0, '总分': 60.0}
+库里查询出的[(UUID('156fc96b-a3f3-4125-9ad1-82ef056dbd90'), UUID('32fcc63a-112b-4a84-b6a4-fe38df9d29e0'), UUID('707a589e-3737-4359-a765-543c48bf2a04'), Decimal('0.00'), Decimal('5.00'), Decimal('4.00'), Decimal('46.00'), Decimal('0.00'), 0, Decimal('0.00'), Decimal('5.00'), Decimal('0.00'), Decimal('5.00'), Decimal('0.00'), Decimal('60.00'), Decimal('0.00'), UUID('32fcc63a-112b-4a84-b6a4-fe38df9d29e0'), '駑雬誈', UUID('8f499ce3-3c57-4eab-81c6-3f2b5b0f5790'), UUID('05973f0f-e095-451d-882b-23c17ae572c9'), UUID('a0eebc81-e78c-4a15-ad90-73b60cf891d8'), datetime.datetime(2018, 10, 9, 19, 10, 0, 840000), datetime.datetime(2018, 10, 9, 19, 16, 13, 320000), 3, 3, 4, 14, 6, datetime.datetime(2018, 10, 9, 19, 10, 26, 887000), UUID('0a1c49ac-78bd-4f5f-84fc-294e1cd312c6'), datetime.datetime(2018, 10, 9, 19, 9, 56, 667000), 2, 5, 10, 5, 5, 20, 5, 15, 20, 5, 15, 20, 5, 15, 15, 10, 5, 10, 5, 5, 15, 60, 25)]
+总分是60.0 库里总分是60.0
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='total_row'>
+    <td>统计</td>
+    <td>36</td>
+    <td>36</td>
+    <td>0</td>
+    <td>0</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+</tr>
+</table>
+<script>
+    drawCircle(36, 0, 0)
+</script>
+
+<div id='ending'>&nbsp;</div>
+
+</body>
+</html>

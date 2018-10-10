@@ -27,7 +27,7 @@ def backstage(base_url,tecphonenum,exname):
  # #退出登录
  login.user_logout(driver)
 
-#教师端
+ #教师端
  driver.get(tecurl)
  driver.maximize_window()
  driver.implicitly_wait(10)

@@ -5,13 +5,22 @@ import os
 from common import readexcel
 from common import writeexcel
 from common.Mssql_pub import MssqlUtil
-from config import readConfig
+import os
+import configparser
 
 # 获取write.xlsx路径
 curpath = os.path.dirname(os.path.realpath(__file__))
 testxlsx = os.path.join(curpath, "write.xlsx")
 testdata = readexcel.Excelread(testxlsx).dict_data()
-experimentname  = readConfig.exname
+
+cur_path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
+configPath = os.path.join(cur_path,"config\\cfg.ini")
+conf = configparser.ConfigParser()
+conf.read(configPath)
+experimentname = conf.get("experiment", "exname")
+
+
+
 @ddt.ddt
 class Test_api(unittest.TestCase):
     @classmethod
@@ -26,6 +35,9 @@ class Test_api(unittest.TestCase):
         stuid = data["学生id"]
         sql = "select * from dbo.AFCS_StudentScore a join dbo.AFCS_Experiment b on a.ExperimentID = b.ExperimentID where ExperimentName = '"+experimentname+"' and StudentID = '"+stuid+"'"
         stulist= self.A.mssql_getrows(sql)
+        print("sql是%s"%sql)
+        print("表里查询出的%s"%data)
+        print("库里查询出的%s"%stulist)
         print("总分是%s"%data["总分"],"库里总分是%s"%float(str(stulist[0][14])))
         self.assertTrue(abs(data["总分"] - float(str(stulist[0][14])))<0.01)
 

@@ -1,0 +1,1482 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>自动化测试报告,测试结果如下：</title>
+    <meta name="generator" content="HTMLTestRunner 0.8.3"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    
+<style type="text/css" media="screen">
+body        { font-family: verdana, arial, helvetica, sans-serif; font-size: 80%; }
+table       { font-size: 100%; }
+pre         { }
+
+/* -- heading ---------------------------------------------------------------------- */
+h1 {
+	font-size: 16pt;
+	color: gray;
+}
+.heading {
+    margin-top: 0ex;
+    margin-bottom: 1ex;
+}
+
+.heading .attribute {
+    margin-top: 1ex;
+    margin-bottom: 0;
+}
+
+.heading .description {
+    margin-top: 4ex;
+    margin-bottom: 6ex;
+}
+
+/* -- css div popup ------------------------------------------------------------------------ */
+a.popup_link {
+}
+
+a.popup_link:hover {
+    color: red;
+}
+.img{
+	width: 100%;
+	height: 100%;
+	border-collapse: collapse;
+    border: 2px solid #777;
+}
+
+.screenshots {
+    z-index: 100;
+	position:absolute;
+	left: 23%;
+	top: 20%;
+	display: none;
+}
+.close_shots {
+	position:absolute;
+	top:0; left:98%;
+	z-index:99;
+	width:20px;
+}
+.popup_window {
+    display: none;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    /*border: solid #627173 1px; */
+    padding: 10px;
+    background-color: #E6E6D6;
+    font-family: "Lucida Console", "Courier New", Courier, monospace;
+    text-align: left;
+    font-size: 8pt;
+    width: 500px;
+}
+
+}
+/* -- report ------------------------------------------------------------------------ */
+#show_detail_line {
+    margin-top: 3ex;
+    margin-bottom: 1ex;
+}
+#result_table {
+    width: 80%;
+    border-collapse: collapse;
+    border: 1px solid #777;
+}
+#header_row {
+    font-weight: bold;
+    color: white;
+    background-color: #777;
+}
+#result_table td {
+    border: 1px solid #777;
+    padding: 2px;
+}
+#total_row  { font-weight: bold; }
+.passClass  { background-color: #6c6; }
+.failClass  { background-color: #c60; }
+.errorClass { background-color: #c00; }
+.passCase   { color: #6c6; }
+.failCase   { color: #c60; font-weight: bold; }
+.errorCase  { color: #c00; font-weight: bold; }
+.hiddenRow  { display: none; }
+.testcase   { margin-left: 2em; }
+
+
+/* -- ending ---------------------------------------------------------------------- */
+#ending {
+}
+
+
+.piechart{
+    position:absolute;  ;
+    top:20px;
+    left:300px;
+    width: 200px;
+    float: left;
+    display:  inline;
+}
+
+
+</style>
+
+</head>
+<body>
+<script language="javascript" type="text/javascript">
+output_list = Array();
+
+/* level - 0:Summary; 1:Failed; 2:All */
+function showCase(level) {
+    trs = document.getElementsByTagName("tr");
+    for (var i = 0; i < trs.length; i++) {
+        tr = trs[i];
+        id = tr.id;
+        if (id.substr(0,2) == 'ft') {
+            if (level < 1) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+        if (id.substr(0,2) == 'pt') {
+            if (level > 1) {
+                tr.className = '';
+            }
+            else {
+                tr.className = 'hiddenRow';
+            }
+        }
+    }
+}
+
+
+function showClassDetail(cid, count) {
+    var id_list = Array(count);
+    var toHide = 1;
+    for (var i = 0; i < count; i++) {
+        tid0 = 't' + cid.substr(1) + '.' + (i+1);
+        tid = 'f' + tid0;
+        tr = document.getElementById(tid);
+        if (!tr) {
+            tid = 'p' + tid0;
+            tr = document.getElementById(tid);
+        }
+        id_list[i] = tid;
+        if (tr.className) {
+            toHide = 0;
+        }
+    }
+    for (var i = 0; i < count; i++) {
+        tid = id_list[i];
+        if (toHide) {
+            document.getElementById('div_'+tid).style.display = 'none'
+            document.getElementById(tid).className = 'hiddenRow';
+        }
+        else {
+            document.getElementById(tid).className = '';
+        }
+    }
+}
+
+
+function showTestDetail(div_id){
+    var details_div = document.getElementById(div_id)
+    var displayState = details_div.style.display
+    // alert(displayState)
+    if (displayState != 'block' ) {
+        displayState = 'block'
+        details_div.style.display = 'block'
+    }
+    else {
+        details_div.style.display = 'none'
+    }
+}
+
+
+function html_escape(s) {
+    s = s.replace(/&/g,'&amp;');
+    s = s.replace(/</g,'&lt;');
+    s = s.replace(/>/g,'&gt;');
+    return s;
+}
+
+function drawCircle(pass, fail, error){
+    var color = ["#6c6","#c60","#c00"];
+    var data = [pass,fail,error];
+    var text_arr = ["pass", "fail", "error"];
+
+    var canvas = document.getElementById("circle");
+    var ctx = canvas.getContext("2d");
+    var startPoint=0;
+    var width = 20, height = 10;
+    var posX = 112 * 2 + 20, posY = 30;
+    var textX = posX + width + 5, textY = posY + 10;
+    for(var i=0;i<data.length;i++){
+        ctx.fillStyle = color[i];
+        ctx.beginPath();
+        ctx.moveTo(112,84);
+        ctx.arc(112,84,84,startPoint,startPoint+Math.PI*2*(data[i]/(data[0]+data[1]+data[2])),false);
+        ctx.fill();
+        startPoint += Math.PI*2*(data[i]/(data[0]+data[1]+data[2]));
+        ctx.fillStyle = color[i];
+        ctx.fillRect(posX, posY + 20 * i, width, height);
+        ctx.moveTo(posX, posY + 20 * i);
+        ctx.font = 'bold 14px';
+        ctx.fillStyle = color[i];
+        var percent = text_arr[i] + ":"+data[i];
+        ctx.fillText(percent, textX, textY + 20 * i);
+
+    }
+}
+
+function show_shots(obj) {
+	obj.nextElementSibling.style.display="block";
+
+}
+
+function close_shots(obj) {
+	obj.parentElement.style.display="none";
+}
+
+</script>
+<div class="piechart">
+    <div>
+        <canvas id="circle" width="350" height="168" </canvas>
+    </div>
+</div>
+<div class='heading'>
+<h1>自动化测试报告,测试结果如下：</h1>
+<p class='attribute'><strong>开始时间:</strong> 2018-09-30 15:29:37</p>
+<p class='attribute'><strong>耗时:</strong> 0:00:00.091005</p>
+<p class='attribute'><strong>状态:</strong> <span class="tj errorCase">Error</span>36</p>
+
+<p class='description'>用例执行情况如下：</p>
+</div>
+
+
+
+<p id='show_detail_line'>显示
+<a href='javascript:showCase(0)'>概要</a>
+<a href='javascript:showCase(1)'>失败</a>
+<a href='javascript:showCase(2)'>所有</a>
+</p>
+
+<table id='result_table'>
+<colgroup>
+<col align='left' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+</colgroup>
+<tr id='header_row'>
+    <td>测试组/测试用例</td>
+    <td>总数</td>
+    <td>通过</td>
+    <td>失败</td>
+    <td>错误</td>
+    <td>视图</td>
+    <td>错误截图</td>
+</tr>
+
+<tr class='errorClass'>
+    <td>test_case.Test_api</td>
+    <td>36</td>
+    <td>0</td>
+    <td>0</td>
+    <td>36</td>
+    <td><a href="javascript:showClassDetail('c1',36)">详情</a></td>
+    <td>&nbsp;</td>
+</tr>
+
+<tr id='ft1.1' class='none'>
+    <td ><div class='testcase'>test_classdiscuss_1</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status errorCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.1')" >
+        错误</a></span>
+
+    <div id='div_ft1.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.1: Traceback (most recent call last):
+  File "D:\Anaconda\set\lib\site-packages\ddt.py", line 144, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\Kesgotd_screen_CountScore\case\test_case.py", line 39, in test_classdiscuss
+    print("课堂讨论是%s"%data["课堂讨论"],"库里课堂讨论是%s"%float(str(stulist[0][6])))
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='ft1.2' class='none'>
+    <td ><div class='testcase'>test_classdiscuss_2</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status errorCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.2')" >
+        错误</a></span>
+
+    <div id='div_ft1.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.2: Traceback (most recent call last):
+  File "D:\Anaconda\set\lib\site-packages\ddt.py", line 144, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\Kesgotd_screen_CountScore\case\test_case.py", line 39, in test_classdiscuss
+    print("课堂讨论是%s"%data["课堂讨论"],"库里课堂讨论是%s"%float(str(stulist[0][6])))
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='ft1.3' class='none'>
+    <td ><div class='testcase'>test_classdiscuss_3</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status errorCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.3')" >
+        错误</a></span>
+
+    <div id='div_ft1.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.3: Traceback (most recent call last):
+  File "D:\Anaconda\set\lib\site-packages\ddt.py", line 144, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\Kesgotd_screen_CountScore\case\test_case.py", line 39, in test_classdiscuss
+    print("课堂讨论是%s"%data["课堂讨论"],"库里课堂讨论是%s"%float(str(stulist[0][6])))
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='ft1.4' class='none'>
+    <td ><div class='testcase'>test_classdiscuss_4</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status errorCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.4')" >
+        错误</a></span>
+
+    <div id='div_ft1.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.4: Traceback (most recent call last):
+  File "D:\Anaconda\set\lib\site-packages\ddt.py", line 144, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\Kesgotd_screen_CountScore\case\test_case.py", line 39, in test_classdiscuss
+    print("课堂讨论是%s"%data["课堂讨论"],"库里课堂讨论是%s"%float(str(stulist[0][6])))
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='ft1.5' class='none'>
+    <td ><div class='testcase'>test_classdiscuss_5</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status errorCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.5')" >
+        错误</a></span>
+
+    <div id='div_ft1.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.5: Traceback (most recent call last):
+  File "D:\Anaconda\set\lib\site-packages\ddt.py", line 144, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\Kesgotd_screen_CountScore\case\test_case.py", line 39, in test_classdiscuss
+    print("课堂讨论是%s"%data["课堂讨论"],"库里课堂讨论是%s"%float(str(stulist[0][6])))
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='ft1.6' class='none'>
+    <td ><div class='testcase'>test_classdiscuss_6</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status errorCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.6')" >
+        错误</a></span>
+
+    <div id='div_ft1.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.6: Traceback (most recent call last):
+  File "D:\Anaconda\set\lib\site-packages\ddt.py", line 144, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\Kesgotd_screen_CountScore\case\test_case.py", line 39, in test_classdiscuss
+    print("课堂讨论是%s"%data["课堂讨论"],"库里课堂讨论是%s"%float(str(stulist[0][6])))
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='ft1.7' class='none'>
+    <td ><div class='testcase'>test_classdiscuss_7</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status errorCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.7')" >
+        错误</a></span>
+
+    <div id='div_ft1.7' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.7').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.7: Traceback (most recent call last):
+  File "D:\Anaconda\set\lib\site-packages\ddt.py", line 144, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\Kesgotd_screen_CountScore\case\test_case.py", line 39, in test_classdiscuss
+    print("课堂讨论是%s"%data["课堂讨论"],"库里课堂讨论是%s"%float(str(stulist[0][6])))
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='ft1.8' class='none'>
+    <td ><div class='testcase'>test_classdiscuss_8</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status errorCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.8')" >
+        错误</a></span>
+
+    <div id='div_ft1.8' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.8').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.8: Traceback (most recent call last):
+  File "D:\Anaconda\set\lib\site-packages\ddt.py", line 144, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\Kesgotd_screen_CountScore\case\test_case.py", line 39, in test_classdiscuss
+    print("课堂讨论是%s"%data["课堂讨论"],"库里课堂讨论是%s"%float(str(stulist[0][6])))
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='ft1.9' class='none'>
+    <td ><div class='testcase'>test_classdiscuss_9</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status errorCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.9')" >
+        错误</a></span>
+
+    <div id='div_ft1.9' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.9').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.9: Traceback (most recent call last):
+  File "D:\Anaconda\set\lib\site-packages\ddt.py", line 144, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\Kesgotd_screen_CountScore\case\test_case.py", line 39, in test_classdiscuss
+    print("课堂讨论是%s"%data["课堂讨论"],"库里课堂讨论是%s"%float(str(stulist[0][6])))
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='ft1.10' class='none'>
+    <td ><div class='testcase'>test_groupperform_1</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status errorCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.10')" >
+        错误</a></span>
+
+    <div id='div_ft1.10' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.10').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.10: Traceback (most recent call last):
+  File "D:\Anaconda\set\lib\site-packages\ddt.py", line 144, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\Kesgotd_screen_CountScore\case\test_case.py", line 47, in test_groupperform
+    print("小组表现是%s"%data["小组表现"],"库里小组表现是%s"%float(str(stulist[0][13])))
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='ft1.11' class='none'>
+    <td ><div class='testcase'>test_groupperform_2</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status errorCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.11')" >
+        错误</a></span>
+
+    <div id='div_ft1.11' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.11').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.11: Traceback (most recent call last):
+  File "D:\Anaconda\set\lib\site-packages\ddt.py", line 144, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\Kesgotd_screen_CountScore\case\test_case.py", line 47, in test_groupperform
+    print("小组表现是%s"%data["小组表现"],"库里小组表现是%s"%float(str(stulist[0][13])))
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='ft1.12' class='none'>
+    <td ><div class='testcase'>test_groupperform_3</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status errorCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.12')" >
+        错误</a></span>
+
+    <div id='div_ft1.12' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.12').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.12: Traceback (most recent call last):
+  File "D:\Anaconda\set\lib\site-packages\ddt.py", line 144, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\Kesgotd_screen_CountScore\case\test_case.py", line 47, in test_groupperform
+    print("小组表现是%s"%data["小组表现"],"库里小组表现是%s"%float(str(stulist[0][13])))
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='ft1.13' class='none'>
+    <td ><div class='testcase'>test_groupperform_4</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status errorCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.13')" >
+        错误</a></span>
+
+    <div id='div_ft1.13' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.13').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.13: Traceback (most recent call last):
+  File "D:\Anaconda\set\lib\site-packages\ddt.py", line 144, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\Kesgotd_screen_CountScore\case\test_case.py", line 47, in test_groupperform
+    print("小组表现是%s"%data["小组表现"],"库里小组表现是%s"%float(str(stulist[0][13])))
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='ft1.14' class='none'>
+    <td ><div class='testcase'>test_groupperform_5</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status errorCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.14')" >
+        错误</a></span>
+
+    <div id='div_ft1.14' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.14').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.14: Traceback (most recent call last):
+  File "D:\Anaconda\set\lib\site-packages\ddt.py", line 144, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\Kesgotd_screen_CountScore\case\test_case.py", line 47, in test_groupperform
+    print("小组表现是%s"%data["小组表现"],"库里小组表现是%s"%float(str(stulist[0][13])))
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='ft1.15' class='none'>
+    <td ><div class='testcase'>test_groupperform_6</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status errorCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.15')" >
+        错误</a></span>
+
+    <div id='div_ft1.15' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.15').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.15: Traceback (most recent call last):
+  File "D:\Anaconda\set\lib\site-packages\ddt.py", line 144, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\Kesgotd_screen_CountScore\case\test_case.py", line 47, in test_groupperform
+    print("小组表现是%s"%data["小组表现"],"库里小组表现是%s"%float(str(stulist[0][13])))
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='ft1.16' class='none'>
+    <td ><div class='testcase'>test_groupperform_7</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status errorCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.16')" >
+        错误</a></span>
+
+    <div id='div_ft1.16' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.16').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.16: Traceback (most recent call last):
+  File "D:\Anaconda\set\lib\site-packages\ddt.py", line 144, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\Kesgotd_screen_CountScore\case\test_case.py", line 47, in test_groupperform
+    print("小组表现是%s"%data["小组表现"],"库里小组表现是%s"%float(str(stulist[0][13])))
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='ft1.17' class='none'>
+    <td ><div class='testcase'>test_groupperform_8</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status errorCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.17')" >
+        错误</a></span>
+
+    <div id='div_ft1.17' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.17').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.17: Traceback (most recent call last):
+  File "D:\Anaconda\set\lib\site-packages\ddt.py", line 144, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\Kesgotd_screen_CountScore\case\test_case.py", line 47, in test_groupperform
+    print("小组表现是%s"%data["小组表现"],"库里小组表现是%s"%float(str(stulist[0][13])))
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='ft1.18' class='none'>
+    <td ><div class='testcase'>test_groupperform_9</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status errorCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.18')" >
+        错误</a></span>
+
+    <div id='div_ft1.18' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.18').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.18: Traceback (most recent call last):
+  File "D:\Anaconda\set\lib\site-packages\ddt.py", line 144, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\Kesgotd_screen_CountScore\case\test_case.py", line 47, in test_groupperform
+    print("小组表现是%s"%data["小组表现"],"库里小组表现是%s"%float(str(stulist[0][13])))
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='ft1.19' class='none'>
+    <td ><div class='testcase'>test_personalperform_1</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status errorCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.19')" >
+        错误</a></span>
+
+    <div id='div_ft1.19' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.19').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.19: Traceback (most recent call last):
+  File "D:\Anaconda\set\lib\site-packages\ddt.py", line 144, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\Kesgotd_screen_CountScore\case\test_case.py", line 55, in test_personalperform
+    print("个人表现是%s"%data["个人表现"],"库里个人表现是%s"%float(str(stulist[0][10])))
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='ft1.20' class='none'>
+    <td ><div class='testcase'>test_personalperform_2</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status errorCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.20')" >
+        错误</a></span>
+
+    <div id='div_ft1.20' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.20').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.20: Traceback (most recent call last):
+  File "D:\Anaconda\set\lib\site-packages\ddt.py", line 144, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\Kesgotd_screen_CountScore\case\test_case.py", line 55, in test_personalperform
+    print("个人表现是%s"%data["个人表现"],"库里个人表现是%s"%float(str(stulist[0][10])))
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='ft1.21' class='none'>
+    <td ><div class='testcase'>test_personalperform_3</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status errorCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.21')" >
+        错误</a></span>
+
+    <div id='div_ft1.21' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.21').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.21: Traceback (most recent call last):
+  File "D:\Anaconda\set\lib\site-packages\ddt.py", line 144, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\Kesgotd_screen_CountScore\case\test_case.py", line 55, in test_personalperform
+    print("个人表现是%s"%data["个人表现"],"库里个人表现是%s"%float(str(stulist[0][10])))
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='ft1.22' class='none'>
+    <td ><div class='testcase'>test_personalperform_4</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status errorCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.22')" >
+        错误</a></span>
+
+    <div id='div_ft1.22' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.22').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.22: Traceback (most recent call last):
+  File "D:\Anaconda\set\lib\site-packages\ddt.py", line 144, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\Kesgotd_screen_CountScore\case\test_case.py", line 55, in test_personalperform
+    print("个人表现是%s"%data["个人表现"],"库里个人表现是%s"%float(str(stulist[0][10])))
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='ft1.23' class='none'>
+    <td ><div class='testcase'>test_personalperform_5</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status errorCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.23')" >
+        错误</a></span>
+
+    <div id='div_ft1.23' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.23').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.23: Traceback (most recent call last):
+  File "D:\Anaconda\set\lib\site-packages\ddt.py", line 144, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\Kesgotd_screen_CountScore\case\test_case.py", line 55, in test_personalperform
+    print("个人表现是%s"%data["个人表现"],"库里个人表现是%s"%float(str(stulist[0][10])))
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='ft1.24' class='none'>
+    <td ><div class='testcase'>test_personalperform_6</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status errorCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.24')" >
+        错误</a></span>
+
+    <div id='div_ft1.24' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.24').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.24: Traceback (most recent call last):
+  File "D:\Anaconda\set\lib\site-packages\ddt.py", line 144, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\Kesgotd_screen_CountScore\case\test_case.py", line 55, in test_personalperform
+    print("个人表现是%s"%data["个人表现"],"库里个人表现是%s"%float(str(stulist[0][10])))
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='ft1.25' class='none'>
+    <td ><div class='testcase'>test_personalperform_7</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status errorCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.25')" >
+        错误</a></span>
+
+    <div id='div_ft1.25' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.25').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.25: Traceback (most recent call last):
+  File "D:\Anaconda\set\lib\site-packages\ddt.py", line 144, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\Kesgotd_screen_CountScore\case\test_case.py", line 55, in test_personalperform
+    print("个人表现是%s"%data["个人表现"],"库里个人表现是%s"%float(str(stulist[0][10])))
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='ft1.26' class='none'>
+    <td ><div class='testcase'>test_personalperform_8</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status errorCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.26')" >
+        错误</a></span>
+
+    <div id='div_ft1.26' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.26').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.26: Traceback (most recent call last):
+  File "D:\Anaconda\set\lib\site-packages\ddt.py", line 144, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\Kesgotd_screen_CountScore\case\test_case.py", line 55, in test_personalperform
+    print("个人表现是%s"%data["个人表现"],"库里个人表现是%s"%float(str(stulist[0][10])))
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='ft1.27' class='none'>
+    <td ><div class='testcase'>test_personalperform_9</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status errorCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.27')" >
+        错误</a></span>
+
+    <div id='div_ft1.27' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.27').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.27: Traceback (most recent call last):
+  File "D:\Anaconda\set\lib\site-packages\ddt.py", line 144, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\Kesgotd_screen_CountScore\case\test_case.py", line 55, in test_personalperform
+    print("个人表现是%s"%data["个人表现"],"库里个人表现是%s"%float(str(stulist[0][10])))
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='ft1.28' class='none'>
+    <td ><div class='testcase'>test_totalscore_1</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status errorCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.28')" >
+        错误</a></span>
+
+    <div id='div_ft1.28' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.28').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.28: 表里查询出的{'rowNum': 2, '学生id': 'fd8579a2-7229-4964-9d5c-adea7c314654', '思考题得分': 5.0, '思考题评分': 0.0, '发言得分': 14.25, '发言评分': 1.0, '提问、回答得分': 14.25, '提问、回答评分': 4.0, '诊断得分': 15.0, '诊断评分': 1.0, '小组投票得分': 0.0, '小组教师评分': 0.7000000000000001, '个人投票得分': 5.0, '个人发言得分': 5.0, '课堂讨论': 49.5, '小组表现': 0.7000000000000001, '个人表现': 10.0, '总分': 65.2}
+库里查询出的[]
+Traceback (most recent call last):
+  File "D:\Anaconda\set\lib\site-packages\ddt.py", line 144, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\Kesgotd_screen_CountScore\case\test_case.py", line 31, in test_totalscore
+    print("总分是%s"%data["总分"],"库里总分是%s"%float(str(stulist[0][14])))
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='ft1.29' class='none'>
+    <td ><div class='testcase'>test_totalscore_2</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status errorCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.29')" >
+        错误</a></span>
+
+    <div id='div_ft1.29' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.29').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.29: 表里查询出的{'rowNum': 3, '学生id': '2138b322-428f-46bb-ae8b-409e295329a7', '思考题得分': 5.0, '思考题评分': 3.0, '发言得分': 0.0, '发言评分': 0.0, '提问、回答得分': 13.5, '提问、回答评分': 0.0, '诊断得分': 15.0, '诊断评分': 0.0, '小组投票得分': 10.0, '小组教师评分': 3.65, '个人投票得分': 0.0, '个人发言得分': 4.5, '课堂讨论': 28.5, '小组表现': 13.65, '个人表现': 4.5, '总分': 54.65}
+库里查询出的[]
+Traceback (most recent call last):
+  File "D:\Anaconda\set\lib\site-packages\ddt.py", line 144, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\Kesgotd_screen_CountScore\case\test_case.py", line 31, in test_totalscore
+    print("总分是%s"%data["总分"],"库里总分是%s"%float(str(stulist[0][14])))
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='ft1.30' class='none'>
+    <td ><div class='testcase'>test_totalscore_3</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status errorCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.30')" >
+        错误</a></span>
+
+    <div id='div_ft1.30' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.30').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.30: 表里查询出的{'rowNum': 4, '学生id': 'd93fa696-2cf6-4a07-b261-51fd1877fd3d', '思考题得分': 5.0, '思考题评分': 0.0, '发言得分': 15.0, '发言评分': 0.0, '提问、回答得分': 15.0, '提问、回答评分': 3.5, '诊断得分': 15.0, '诊断评分': 2.0, '小组投票得分': 9.5, '小组教师评分': 0.0, '个人投票得分': 0.0, '个人发言得分': 5.0, '课堂讨论': 50.5, '小组表现': 9.5, '个人表现': 5.0, '总分': 70.0}
+库里查询出的[]
+Traceback (most recent call last):
+  File "D:\Anaconda\set\lib\site-packages\ddt.py", line 144, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\Kesgotd_screen_CountScore\case\test_case.py", line 31, in test_totalscore
+    print("总分是%s"%data["总分"],"库里总分是%s"%float(str(stulist[0][14])))
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='ft1.31' class='none'>
+    <td ><div class='testcase'>test_totalscore_4</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status errorCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.31')" >
+        错误</a></span>
+
+    <div id='div_ft1.31' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.31').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.31: 表里查询出的{'rowNum': 5, '学生id': '7f63e8e5-0dc5-460a-95e8-3f65c709e181', '思考题得分': 5.0, '思考题评分': 0.0, '发言得分': 14.25, '发言评分': 1.0, '提问、回答得分': 14.25, '提问、回答评分': 4.0, '诊断得分': 15.0, '诊断评分': 1.0, '小组投票得分': 0.0, '小组教师评分': 0.7000000000000001, '个人投票得分': 4.75, '个人发言得分': 4.0, '课堂讨论': 49.5, '小组表现': 0.7000000000000001, '个人表现': 8.75, '总分': 63.95}
+库里查询出的[]
+Traceback (most recent call last):
+  File "D:\Anaconda\set\lib\site-packages\ddt.py", line 144, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\Kesgotd_screen_CountScore\case\test_case.py", line 31, in test_totalscore
+    print("总分是%s"%data["总分"],"库里总分是%s"%float(str(stulist[0][14])))
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='ft1.32' class='none'>
+    <td ><div class='testcase'>test_totalscore_5</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status errorCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.32')" >
+        错误</a></span>
+
+    <div id='div_ft1.32' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.32').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.32: 表里查询出的{'rowNum': 6, '学生id': '1ee5c1bb-fe64-4407-8181-296c6713f55c', '思考题得分': 5.0, '思考题评分': 0.0, '发言得分': 14.25, '发言评分': 1.0, '提问、回答得分': 14.25, '提问、回答评分': 4.0, '诊断得分': 15.0, '诊断评分': 1.0, '小组投票得分': 0.0, '小组教师评分': 0.7000000000000001, '个人投票得分': 0.0, '个人发言得分': 4.0, '课堂讨论': 49.5, '小组表现': 0.7000000000000001, '个人表现': 4.0, '总分': 59.2}
+库里查询出的[]
+Traceback (most recent call last):
+  File "D:\Anaconda\set\lib\site-packages\ddt.py", line 144, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\Kesgotd_screen_CountScore\case\test_case.py", line 31, in test_totalscore
+    print("总分是%s"%data["总分"],"库里总分是%s"%float(str(stulist[0][14])))
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='ft1.33' class='none'>
+    <td ><div class='testcase'>test_totalscore_6</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status errorCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.33')" >
+        错误</a></span>
+
+    <div id='div_ft1.33' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.33').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.33: 表里查询出的{'rowNum': 7, '学生id': 'a1927377-ee5e-430b-ae6d-ee071ceb08cf', '思考题得分': 5.0, '思考题评分': 5.0, '发言得分': 14.25, '发言评分': 1.0, '提问、回答得分': 14.25, '提问、回答评分': 4.0, '诊断得分': 15.0, '诊断评分': 1.0, '小组投票得分': 0.0, '小组教师评分': 0.7000000000000001, '个人投票得分': 0.0, '个人发言得分': 3.5, '课堂讨论': 49.5, '小组表现': 0.7000000000000001, '个人表现': 3.5, '总分': 63.7}
+库里查询出的[]
+Traceback (most recent call last):
+  File "D:\Anaconda\set\lib\site-packages\ddt.py", line 144, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\Kesgotd_screen_CountScore\case\test_case.py", line 31, in test_totalscore
+    print("总分是%s"%data["总分"],"库里总分是%s"%float(str(stulist[0][14])))
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='ft1.34' class='none'>
+    <td ><div class='testcase'>test_totalscore_7</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status errorCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.34')" >
+        错误</a></span>
+
+    <div id='div_ft1.34' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.34').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.34: 表里查询出的{'rowNum': 8, '学生id': 'a399dbf1-4cbf-458e-b8fa-3ad1fbb9b414', '思考题得分': 5.0, '思考题评分': 0.0, '发言得分': 15.0, '发言评分': 0.0, '提问、回答得分': 15.0, '提问、回答评分': 3.5, '诊断得分': 15.0, '诊断评分': 2.0, '小组投票得分': 9.5, '小组教师评分': 0.0, '个人投票得分': 4.75, '个人发言得分': 3.25, '课堂讨论': 50.5, '小组表现': 9.5, '个人表现': 8.0, '总分': 73.0}
+库里查询出的[]
+Traceback (most recent call last):
+  File "D:\Anaconda\set\lib\site-packages\ddt.py", line 144, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\Kesgotd_screen_CountScore\case\test_case.py", line 31, in test_totalscore
+    print("总分是%s"%data["总分"],"库里总分是%s"%float(str(stulist[0][14])))
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='ft1.35' class='none'>
+    <td ><div class='testcase'>test_totalscore_8</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status errorCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.35')" >
+        错误</a></span>
+
+    <div id='div_ft1.35' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.35').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.35: 表里查询出的{'rowNum': 9, '学生id': 'd2785010-c10c-4346-a9e8-8150d710feba', '思考题得分': 5.0, '思考题评分': 1.0, '发言得分': 14.25, '发言评分': 1.0, '提问、回答得分': 14.25, '提问、回答评分': 4.0, '诊断得分': 15.0, '诊断评分': 1.0, '小组投票得分': 0.0, '小组教师评分': 0.7000000000000001, '个人投票得分': 0.0, '个人发言得分': 4.25, '课堂讨论': 49.5, '小组表现': 0.7000000000000001, '个人表现': 4.25, '总分': 60.45}
+库里查询出的[]
+Traceback (most recent call last):
+  File "D:\Anaconda\set\lib\site-packages\ddt.py", line 144, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\Kesgotd_screen_CountScore\case\test_case.py", line 31, in test_totalscore
+    print("总分是%s"%data["总分"],"库里总分是%s"%float(str(stulist[0][14])))
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='ft1.36' class='none'>
+    <td ><div class='testcase'>test_totalscore_9</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <span class='status errorCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.36')" >
+        错误</a></span>
+
+    <div id='div_ft1.36' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.36').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.36: 表里查询出的{'rowNum': 10, '学生id': '7abfd585-d10c-4906-821f-fdd8fc8d7d98', '思考题得分': 5.0, '思考题评分': 4.0, '发言得分': 14.25, '发言评分': 1.0, '提问、回答得分': 14.25, '提问、回答评分': 4.0, '诊断得分': 15.0, '诊断评分': 1.0, '小组投票得分': 0.0, '小组教师评分': 0.7000000000000001, '个人投票得分': 0.0, '个人发言得分': 3.25, '课堂讨论': 49.5, '小组表现': 0.7000000000000001, '个人表现': 3.25, '总分': 62.45}
+库里查询出的[]
+Traceback (most recent call last):
+  File "D:\Anaconda\set\lib\site-packages\ddt.py", line 144, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\Kesgotd_screen_CountScore\case\test_case.py", line 31, in test_totalscore
+    print("总分是%s"%data["总分"],"库里总分是%s"%float(str(stulist[0][14])))
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+    <td></td>
+</tr>
+
+<tr id='total_row'>
+    <td>统计</td>
+    <td>36</td>
+    <td>0</td>
+    <td>0</td>
+    <td>36</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+</tr>
+</table>
+<script>
+    drawCircle(0, 0, 36)
+</script>
+
+<div id='ending'>&nbsp;</div>
+
+</body>
+</html>

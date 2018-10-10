@@ -39,7 +39,7 @@ def TakeStuInGroup(grouplist,stulist):#从学生列表中选择学生加入小�
            c.append([choice(grouplist),stulist[j-1]])
    else:
        print("组数大于学生数！！！")
-   print(c)
+   # print(c)
    return c
 
 def TakeOldtoNewlist(templsit,n):#从旧列表中取值组成新的列表
