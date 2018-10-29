@@ -17,7 +17,7 @@ class Login():
         sleep(2)
         above1=driver.find_element_by_xpath("//*[@id='img_userPhoto']")
         ActionChains(driver).move_to_element(above1).perform()
-        sleep(5)
+        sleep(1)
         driver.find_element_by_xpath("//*[@id='header']/div[1]/div/div[4]/ul/li[1]/a").click()
         driver.find_element_by_xpath(".//*[@id='btnAdd']").click()
         frame_ele=driver.find_element_by_xpath(".//iframe[@class='jzart-iframe']")
