@@ -46,7 +46,7 @@ def wexcel(base_url,mb,exname):
     # setgroupno = 1
     if setgroupno == 1:
         uioper.clickgroup1()
-        screenOperationtmp = ScreenOperationTmp(ExperimentID)
+        screenOperationtmp = ScreenOperationTmp(ExperimentID,base_url)
         trueGroupidlist = TakeOldtoNewlist(screenOperationtmp.Groupidlist,0)#小组列表
         trueStuidlist = TakeOldtoNewlist(stulistsum,0)#学生列表
         postlist = TakeStuInGroup(trueGroupidlist,trueStuidlist)#学生和小组的列表

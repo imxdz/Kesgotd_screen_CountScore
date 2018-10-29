@@ -128,7 +128,8 @@ class ScreenOperationOne():
 
 
 class ScreenOperationTmp():
- def __init__(self,ExperimentID):
+ def __init__(self,ExperimentID,base_url):
+       self.base_url = base_url
        self.A = MssqlUtil()
        sqlselgroup = "select GroupID from dbo.AFCS_Group where ExperimentID ='"+ExperimentID+"'"
        Bselgroup = self.A.mssql_getrows(sqlselgroup)
